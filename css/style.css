@@ -308,6 +308,7 @@ div.answer-choices ul.answer-text li:last-child i {
   display: inline;
   font-size: 18pt;
   margin: 0 40px;
+  opacity: 0.75;
   color: #778DA3;
   letter-spacing: 0.4em;
 }
