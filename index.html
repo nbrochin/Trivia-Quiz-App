@@ -9,10 +9,13 @@
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="styles/reset.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,900italic' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/style.css"/>
 	</head>
 	<body>
+	<div class="big-wrapper">
 
 		<header> <!--Header -->
 
@@ -32,24 +35,7 @@
 			</ul>
 
 		</header>
-			<!-- Modal Information Box -->
-			<div class="overlay" id="modal">
-				<div class="content">
-					<h3>How to Play:</h3>
-					<div>
-						<p>Here are the rules for the Quiz Buzz Triva Game:</p>
-						<ol>
-							<li>1. Press the <strong>start button</strong> in the upper right hand corner to begin a game.</li>
-							<li>2. A question will appear, shortly followed by four possible answers.<strong></strong></li>
-							<li>3. Each question is worth between 5 and 25 points depending on its difficulty rating.<strong></strong></li>
-							<li>4. You will have 10 seconds to answer each question, after which the next question will appear.<strong></strong></li>
-						</ol>
-						<p>So, are you ready? Good luck!</p>
-						<br />
-						<a class="close" href="#">GOT IT</a>
-					</div>
-				</div>
-			</div>
+
 
 			<!-- logo text -->
 
@@ -58,7 +44,7 @@
 				<div id="question-number" class="question-01">QUESTION 02</div>
 				<div id="question-dots" class="q-dots-css" <i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></div>
 				<div id="question-score" class="q-score-css"> +15 pts</div>
-				<div id="start-game" class="start-game-css"> + START</div>
+				<div id="start-game" class="start-game-css"><button class="btn btn-primary">+ START</button></div>
 
 
 	  	<div class="trivia-questions"> <!-- Guessing Section -->
@@ -81,7 +67,27 @@
 					<li class="high-score" href="#">HIGH SCORE</a></li>
 			</ul>
 		</footer>
+	</div>
+		<!-- Modal Information Box -->
+		<div class="overlay" id="modal">
+			<div class="content">
+				<h3>How to Play:</h3>
+				<div>
+					<p>Here are the rules for the Quiz Buzz Triva Game:</p>
+					<ol>
+						<li>1. Press the <strong>start button</strong> in the upper right hand corner to begin a game.</li>
+						<li>2. A question will appear, shortly followed by four possible answers.<strong></strong></li>
+						<li>3. Each question is worth between 5 and 25 points depending on its difficulty rating.<strong></strong></li>
+						<li>4. You will have 10 seconds to answer each question, after which the next question will appear.<strong></strong></li>
+					</ol>
+					<p>So, are you ready? Good luck!</p>
+					<br />
+					<a class="close" href="#">GOT IT</a>
+				</div>
+			</div>
+		</div>
 		<!-- JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 	</body>

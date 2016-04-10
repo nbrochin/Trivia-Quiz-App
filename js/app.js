@@ -99,13 +99,20 @@ $(document).ready(function(){
 
 	/*--- Display information modal box ---*/
  		$(".app-instructions").click(function(){
-   	$(".overlay").fadeIn(1000);
+		$(".control-panel").hide();
+		$("ul.footer-box").hide();
+   	$(".overlay").show();
+		$(".big-wrapper").css("opacity", "0.6");
 
   	});
 
   	/*--- Hide information modal box ---*/
   	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
+  		$(".overlay").fadeOut(500);
+			$(".control-panel").show();
+			$("ul.footer-box").show();
+			$(".big-wrapper").css("opacity", "0.9");
+
 	});
 
 });
