@@ -287,12 +287,12 @@ ul.answer-text:first-child  {
 }
 
 .answer-text li {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 500;
   font-family: 'Museo Slab';
   line-height: 1.4em;
   z-index: 999;
-  color: #333333;
+  color: #777777;
   text-align:left;
   margin-left:36px;
 }
