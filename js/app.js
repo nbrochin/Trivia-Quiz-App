@@ -118,13 +118,13 @@ $(document).ready(function(){
     selections[questionCounter] = +$('input[name="answer"]:checked').val();
   }
   
-  // Displays next requested element
+  // Displays next question
   function displayNext() {
     quiz.fadeOut(function() {
       $('.trivia-questions').hide();
       $('.question-01 h2').hide();
-      $('header ul li.total-score').text("0");
-	  $('.q-score-css').text("+0 pts");
+      $('header ul li.total-score').text("05");
+	  $('.q-score-css').text("+10 pts");
 	  // $(".question-01 h2").text("QUESTION 01");
 	  $(".fa-circle:nth-child(2)").css("color", "#778DA3" );
       
