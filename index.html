@@ -5,8 +5,7 @@
 		<!-- Meta Tags -->
 		<meta charset="utf-8"/>
 		<!-- Stylesheets -->
-		<script src="https://use.typekit.net/luu5hzh.js"></script>
-		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="styles/reset.css">
 		<!-- Latest compiled and minified CSS -->
@@ -17,13 +16,13 @@
 	<body>
 	<div class="big-wrapper">
 
-		<header> <!--Header -->
+		<header> <!--Header -->	  
 
 			<!-- Top Navigation -->
 			<ul class="left-header-box">
 					<li class="app-title">QUIZ BUZZ</li>
 					<div class='visible'>
-					<li class="topic-title" href="#">FAMOUS INVENTORS</a></li>
+					<li class="topic-title">FAMOUS INVENTORS</a></li>
 					<li class="topic-title">WORLD CAPITOLS</li>
 	 				<li class="topic-title">PLANT LIFE OF DELAWARE</li>
 	 				<li class="topic-title">JETSONS TV TRIVIA</li>
@@ -41,30 +40,37 @@
 
 			<section class="control-panel"> <!-- Guessing Section -->
 
-				<div id="question-number" class="question-01">QUESTION 02</div>
+				<div id="question-number" class="question-01"><h2></h2></div>
 				<div id="question-dots" class="q-dots-css" <i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></div>
 				<div id="question-score" class="q-score-css"> +15 pts</div>
-				<div id="start-game" class="start-game-css"><button class="btn btn-primary">+ START</button></div>
+				<div id="start-game" class="start-game-css"><button class="btn btn-primary">NEW GAME</button></div>
+				<div id="start-game" class="start-game-css"><button class='btn btn-warning' id='next'>NEXT</button></div>
+	<!-- Questions Section -->
+	  <div class="trivia-questions"> 
+				<section id="QA-holder">
 
-
-	  	<div class="trivia-questions"> <!-- Guessing Section -->
-						<div class="question-text">
-						In what city were multiple important innovations in the field of glassware achieved in the 16th century?
-						</div>
-			</div>
+	  </div>
 			<div class="answer-choices">
 				<ul class="answer-text">
-						<li> A <i class="fa fa-square"></i><span>Florence, Italy</span></li>
-						<li> B <i class="fa fa-square"></i><span>Venice, Italy</span></li>
-						<li> C <i class="fa fa-square"></i><span>Dusseldorf, Germany</span></li>
-						<li> D <i class="fa fa-square"></i><span>Lucerne, Switzerland</span></li>
+					
+						<!-- <li><i class="fa fa-square"></i><span>Florence, Italy</span></li>
+						<li><i class="fa fa-square"></i><span>Venice, Italy</span></li>
+						<li><i class="fa fa-square"></i><span>Dusseldorf, Germany</span></li>
+						<li><i class="fa fa-square"></i><span>Lucerne, Switzerland</span></li> -->
+
+  				</section>
 				</ul>
+			</section>	
 			</div>
-			</section>
+	
+
 		<footer>
 			<ul class="footer-box">
 					<li class="app-instructions"><a href="#">HOW TO PLAY</a></li>
 					<li class="high-score" href="#">HIGH SCORE</a></li>
+					
+    		<li><div class='button' id='prev'><a href='#'>Prev</a></div></li>
+
 			</ul>
 		</footer>
 	</div>
@@ -73,7 +79,8 @@
 			<div class="content">
 				<h3>How to Play:</h3>
 				<div>
-					<p>Here are the rules for the Quiz Buzz Triva Game:</p>
+					<h2>Here are the rules for the Quiz Buzz Trivia Game:</h2>
+					<br />
 					<ol>
 						<li>1. Press the <strong>start button</strong> in the upper right hand corner to begin a game.</li>
 						<li>2. A question will appear, shortly followed by four possible answers.<strong></strong></li>
@@ -82,13 +89,16 @@
 					</ol>
 					<p>So, are you ready? Good luck!</p>
 					<br />
-					<a class="close" href="#">GOT IT</a>
+					<div class="close" href="#"><button class="btn btn-danger">GOT IT</button></div>
 				</div>
 			</div>
 		</div>
 		<!-- JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+		<script src="https://use.typekit.net/luu5hzh.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 	</body>
 </html>

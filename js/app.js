@@ -1,118 +1,202 @@
-
 $(document).ready(function(){
 
-	 function genRandnum(){
+  var questions = [{
+    question: "Nikola Tesla's greatest contribution to science was which of the following achievements?",
+    choices: [' AC induction motor', ' The light bulb with tungsten filament', ' Underground electrical wires', ' The 3-pronged electrical outlet'],
+    correctAnswer: 0,
+    point_value: 15
+  }, {
+    question: "Which of the following positions did Benjamin Franklin NOT hold?",
+    choices: [" Ambassador to France", " Newpaper editor in Philadelphia", " British postmaster for the colonies", " Inventor of the kite"],
+    correctAnswer: 3,
+    point_value: 10
+  }, {
+    question: "What was the first message sent by Samuel Morse's telegraph machine?",
+    choices: [" Save our souls", " What hath God wrought?", " Mr. Watson, come here!", " Now is the time for all good men."],
+    correctAnswer: 1
+  }, {
+    question: "This inventor of the Optical Analysis System was also the world's first Hispanic female astronaut. What is her name?",
+    choices: [ " Ellen Ochoa", " Sally Ride", " Linda Chavez", " Margaret Kingsley"],
+    correctAnswer: 0,
+    point_value: 20
+  }, {
+    question: "Which Dutch inventor introduced the telescope to the world?",
+    choices: [" Hans Schopol", " Hans Lippershy", " Johann Bach", " Hans Holbein"],
+    correctAnswer: 1,
+    point_value: 20
+  }];
+  
+  var questionCounter = 0; //Tracks question number
+  var selections = []; //Array containing user choices
+  var quiz = $('.trivia-questions'); //Quiz div object
+  
+  // Display initial question
+  displayNext();
+  
+  // Click handler for the 'next' button
+  $('#next').on('click', function (e) {
+    e.preventDefault();
+    
+    // Suspend click listener during fade animation
+    if(quiz.is(':animated')) {        
+      return false;
+    }
+    choose();
+    
+    // If no user selection, progress is stopped
+    if (isNaN(selections[questionCounter])) {
+      alert('Please choose an answer!');
+    } else {
+      questionCounter++;
+      displayNext();
+    }
+  });
+  
+  // Click handler for the 'prev' button
+  $('#prev').on('click', function (e) {
+    e.preventDefault();
+    
+    if(quiz.is(':animated')) {
+      return false;
+    }
+    choose();
+    questionCounter--;
+    displayNext();
+  });
+  
+  // Click handler for the 'Start Over' button
+  $('#start').on('click', function (e) {
+    e.preventDefault();
+    
+    if(quiz.is(':animated')) {
+      return false;
+    }
+    questionCounter = 0;
+    selections = [];
+    displayNext();
+    $('#start').hide();
+  });
+  
+  // Creates and returns the div that contains the questions and 
+  // the answer selections
+  function createQuestionElement(index) {
+    var qElement = $('<div class="trivia-questions">', {
+      id: 'question-number'
+    });
+    
+    var questionNo = $('<h2>QUESTION ' + 0 + (index + 1) + ':</h2>');
+  	$('#question-number.question-01').append(questionNo);
+    
+    var question = $('<div class="question-text">').append(questions[index].question);
+    qElement.append(question);
+    
+    var radioButtons = createRadios(index);
+    qElement.append(radioButtons);
+    
+    return qElement;
+  }
+  
+  // Creates a list of the answer choices as radio inputs
+  function createRadios(index) {
+    var radioList = $('<ul class="answer-text">');
+    var item;
+    var input = '';
+    for (var i = 0; i < questions[index].choices.length; i++) {
+      item = $('<li>');
+      input = '<input type="radio" name="answer" value=' + i + ' />';
+      input += questions[index].choices[i];
+      item.append(input);
+      radioList.append(item);
+    }
+    return radioList;
+  
+  }
 
-		 return Math.floor(Math.random()* 100 ) + 1;
-		}
-		var randNum = genRandnum();
-		var counter = 1;
-
-	$('#guessButton').click(function(){
+  
+  // places user choice into an array
+  function choose() {
+    selections[questionCounter] = +$('input[name="answer"]:checked').val();
+  }
+  
+  // Displays next requested element
+  function displayNext() {
+    quiz.fadeOut(function() {
+      $('.trivia-questions').hide();
+      $('.question-01 h2').hide();
+      $('header ul li.total-score').text("0");
+	  $('.q-score-css').text("+0 pts");
+	  // $(".question-01 h2").text("QUESTION 01");
+	  $(".fa-circle:nth-child(2)").css("color", "#778DA3" );
+      
+      if(questionCounter < questions.length){
+        var nextQuestion = createQuestionElement(questionCounter);
+        quiz.append(nextQuestion).fadeIn();
+        if (!(isNaN(selections[questionCounter]))) {
+          $('input[value='+selections[questionCounter]+']').prop('checked', true);
+        }
+        
+        // Controls display of 'prev' button
+        if(questionCounter === 1){
+          $('#prev').show();
+        } else if(questionCounter === 0){
+          
+          $('#next').show();
+        }
+      }else {
+        var scoreElem = displayScore();
+        quiz.append(scoreElem).fadeIn();
+        $('#next').hide();
+        $('#start').show();
+        console.log(questionCounter)
+      }
+    });
+  }
+  
+  $('.start-game-css').click(function(){
 			event.preventDefault();
+			$("header ul li.total-score").text("0");
+			$(".q-score-css").text("+0 pts");
+			$('header ul li.topic-title').text('FAMOUS INVENTORS');
+			$('header ul li.topic-title').css('animation-play-state','paused');
+			$(".fa-circle:nth-child(2)").css("color", "#778DA3" );
 
-    //no empty fields
-		var guess = $('#userGuess').val();
-		$('#userGuess').val('');
-		guess = parseInt(guess);
-		var spread =  Math.abs(randNum - guess);
-		console.log('Secret Random Number is ' + randNum +'.');
-		console.log('The spread is ' + spread +'.');
-		console.log(guess);
+ });
 
-        //add guesses to list
-			if(spread >= 60 ) {
-				$('#guessList').append("<li style='background-color:#231b87;'>" + guess + "</li>");
-				}
-				else if(spread >=45){
-				$('#guessList').append("<li style='background-color:#195ba6;'>" + guess + "</li>");
-				}
-				else if(spread >=32){
-					$('#guessList').append("<li style='background-color:#19a4aa;'>" + guess + "</li>");
-				}
-				else if(spread >=24){
-					$('#guessList').append("<li style='background-color:#9fd219;'>" + guess + "</li>");
-				}
-				else if(spread >=16){
-					$('#guessList').append("<li style='background-color:#f9da17; color:#222222;'>" + guess + "</li>");
-				}
-				else if(spread >=9){
-					$('#guessList').append("<li style='background-color:#eb570f;'>" + guess + "</li>");
-				}
-				else if(spread >=5){
-					$('#guessList').append("<li style='background-color:#c12b68;'>" + guess + "</li>");
-				}
-				else if(spread >=1){
-					$('#guessList').append("<li style='background-color:#771423;'>" + guess + "</li>");
-				}
-				else if(spread == 0){
-					$('#guessList').append("<li style='background-color:#000000;'>" + guess + "</li>");
-				}
+  // Calculates number of correct answers and creates a dynamic message to be displayed
+  function displayScore() {
+    var score = $('<p>',{id: 'QA-holder'});
+    
+    var numCorrect = 0;
+    for (var i = 0; i < selections.length; i++) {
+      if (selections[i] === questions[i].correctAnswer) {
+        numCorrect++;
+      }
 
+    }
+    
+    score.append('<h2>You answered ' + numCorrect + ' questions out of ' +
+                 questions.length + ' correctly. That stinks.</h2>');
+    return score;
+  }
+  
 
-        // viewing number of guesses
-				$('#count').html(counter++);
-				// spread =  Math.abs(randNum - guess);
-
-				// hot and cold logic
-				console.log(spread);
-				if(spread >=60){
-					$('#feedback').replaceWith("<h2 id='feedback'>cold like the polar tundra (the coldest).</h2>");
-				}
-				else if(spread >= 40){
-					$('#feedback').replaceWith("<h2 id='feedback'>cold like january in cleveland. that's bad.</h2>");
-				}
-				else if(spread >=25){
-					$('#feedback').replaceWith("<h2 id='feedback'>like london in march, you're a little chilly.</h2>");
-				}
-				else if(spread >=17){
-					$('#feedback').replaceWith("<h2 id='feedback'>Ah. may in Boston. nice breeze.</h2>");
-				}
-				else if(spread >=8){
-					$('#feedback').replaceWith("<h2 id='feedback'>Miami in june is uncomfortably warm.</h2>");
-				}
-				else if(spread >=1){
-					$('#feedback').replaceWith("<h2 id='feedback'>atlanta in july means, you are very hot.</h2>");
-				}
-				else if(spread === 0){
-					$('#feedback').replaceWith("<h2 id='feedback'>winner. winner. chicken dinner!!</h2>");
-				}
-
-				else{
-					alert('Please enter a number between 1 and 100');
-				}
-		});
-
-		$('.new').click(function(){
-					$('h2#feedback').replaceWith("<h2 id='feedback'>i am thinking of a number between 1 and 100. Can you guess it?</h2");
-					$('#guessList').html('');
-					$('#userGuess').val('');
-					$('#count').replaceWith("<span id='count'>0</span>");
-
-    			counter = 1;
-
-		//generate random number, again; otherwise it get's stuck
-					randNum = genRandnum();
-					console.log('new number that will be replaced ' + randNum);
-
-			});
-
-	/*--- Display information modal box ---*/
+  /*--- Display information modal box ---*/
  		$(".app-instructions").click(function(){
 		$(".control-panel").hide();
 		$("ul.footer-box").hide();
-   	$(".overlay").show();
-		$(".big-wrapper").css("opacity", "0.6");
+		$('body').css('background', 'url(../Triva-Quiz-App/images/galilleo-bkgd-dk.jpg) no-repeat 0 0');
+   		$(".overlay").show();
 
   	});
 
   	/*--- Hide information modal box ---*/
-  	$("a.close").click(function(){
+  	$(".close").click(function(){
   		$(".overlay").fadeOut(500);
 			$(".control-panel").show();
 			$("ul.footer-box").show();
 			$(".big-wrapper").css("opacity", "0.9");
+			$('body').css('background', 'url(../Triva-Quiz-App/images/galilleo-bkgd.jpg) no-repeat 0 0');
+
 
 	});
-
 });

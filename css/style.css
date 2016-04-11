@@ -27,7 +27,6 @@ html {
 body {
 	position: relative;
 	width: 98%;
-	height: 96%;
 	margin: 0.8em auto;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 	background-color: #ffffff;
@@ -42,11 +41,22 @@ body {
   .big-wrapper {
   	position: relative;
   	width: 1280px;
-  	background-color: "";
+  	background-color: "black";
     display: inherit;
     opacity: 1.0;
     z-index: 0001;
   	}
+
+#QA-holder {
+  background-color: #fbfbfb;
+  width: 970px;
+  margin: 0 auto;
+  padding: 5px;
+  box-sizing: border-box;
+  display: inline-block;
+  border-radius: 12px;
+  z-index: 999;
+}
 
 a {
 	text-decoration: none;
@@ -63,7 +73,7 @@ ul li {
 
 header {
 	position: relative;
-	height: auto;
+	height: 30%;
 	padding: 1em;
 }
 
@@ -78,7 +88,7 @@ header ul.left-header-box {
   margin: 40px 20px 0 40px;
   border-radius: 12px;
   background-color: #453a5e;
-  width: 77%;
+  width: 70%;
   padding: 32px;
 }
 
@@ -87,7 +97,7 @@ header ul.right-header-box {
   margin: 40px 20px 0 0px;
   border-radius: 12px;
   background-color: #453a5e;
-  width: 16%;
+  width: 20%;
   padding: 15px;
 }
 
@@ -204,14 +214,19 @@ h1 {
 	border-radius: 3px;
 }
 
+.close {
+  float:right;
+  opacity: 1.0 !important;
+}
+
 /*---------------------------------------------------------------------------------
    QUESTION AND ANSWER CHOICES
 ---------------------------------------------------------------------------------*/
 
 .control-panel {
 	background-color: #fbfbfb;
-	width: auto;
-  margin: 15px 42px 0 54px;
+	width: auto;;
+  margin: 15px 20px 0 54px;
   padding: 25px;
   opacity: 0.8;
   box-sizing: border-box;
@@ -221,35 +236,34 @@ h1 {
 }
 
 .trivia-questions {
-	width: 1100px;
-  padding: 20px;
-  margin-top: 20px;
+	width: auto;;
+  padding: 9px;
   box-sizing: border-box;
-  background-color: #dfebae;
-  display: inline-block;
+  text-align: left;
   z-index: 0;
 }
 
 .question-text {
-	width: auto;;
-  font-size: 30px;
+	width: 1060px;
+  font-size: 32px;
   font-weight: 500;
   font-family: 'Museo Slab' !important;
   line-height: 1.2em;
-  z-index: 999;
-  margin-bottom:15px;
+  padding: 12px;
+  background-color: #dfebae;
+  margin:20px 0;
   color: #28161A;
   text-align:left;
 }
 
 .answer-choices {
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 500;
   font-family: 'Museo Slab' !important;
   z-index: 999;
   color: #333333;
   text-align:left;
-  margin-top: 30px;
+  margin: 20px;
 }
 
 .answer-choices ul i {
@@ -274,7 +288,7 @@ ul.answer-text:first-child  {
 
 .answer-text li {
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 500;
   font-family: 'Museo Slab';
   line-height: 1.4em;
   z-index: 999;
@@ -311,7 +325,7 @@ div.answer-choices ul.answer-text li:last-child i {
 
 .q-score-css {
   display: inline;
-  margin: 0 40px;
+  margin: 0 20px;
   font-size: 2.5em;
   color: #4C6116;
   font-weight: 700;
@@ -322,7 +336,7 @@ div.answer-choices ul.answer-text li:last-child i {
   display: inline;;
   color: #7a5aa6;
   font-size: 36px;
-  margin: 0 40px;
+  margin: 0 20px;
   float: right;
 }
 
@@ -335,6 +349,13 @@ div.answer-choices ul.answer-text li:last-child i {
 	color: #7a5aa6;
   text-align: left;
   margin: 0 50px 0 20px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #7a5aa6;
+    border-color: #453a5e;
+
 }
 
 h3 {
@@ -364,9 +385,9 @@ footer ul.footer-box {
   margin: 5px 20px 0 40px;
   border-radius: 12px;
   background-color: #453a5e;
-  width: 94.5%;
+  width: 92%;
   height: 136px;
-  padding: 13px;
+  padding: 15px;
   display: block;
 }
 
@@ -418,3 +439,5 @@ p {
   68%,80%  {transform:translateY(-100%);}
   85%,97%  {transform:translateY(-200%);}
 }
+
+
