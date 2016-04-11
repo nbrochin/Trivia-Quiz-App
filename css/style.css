@@ -60,7 +60,13 @@ body {
 
 a {
 	text-decoration: none;
-	color: white;
+	color: #453a5e;
+  margin-left: 20px;
+}
+
+a:focus, a:hover {
+    color: #7a5aa6;
+    text-decoration: none;
 }
 
 ul li {
@@ -81,11 +87,12 @@ header ul li {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 1.2em;
+  color: #453a5e;
 }
 
 header ul.left-header-box {
 	float: left;
-  margin: 40px 20px 0 40px;
+  margin: 10px 20px 0 40px;
   border-radius: 12px;
   background-color: #453a5e;
   width: 70%;
@@ -94,7 +101,7 @@ header ul.left-header-box {
 
 header ul.right-header-box {
 	float: left;
-  margin: 40px 20px 0 0px;
+  margin: 10px 20px 0 0px;
   border-radius: 12px;
   background-color: #453a5e;
   width: 20%;
@@ -225,7 +232,7 @@ h1 {
 
 .control-panel {
 	background-color: #fbfbfb;
-	width: auto;;
+	width: 1147px;
   margin: 15px 20px 0 54px;
   padding: 25px;
   opacity: 0.8;
@@ -348,7 +355,7 @@ div.answer-choices ul.answer-text li:last-child i {
 	line-height: 1em;
 	color: #7a5aa6;
   text-align: left;
-  margin: 0 50px 0 20px;
+  margin: 0 20px 0 20px;
 }
 
 .btn-primary {
@@ -382,7 +389,7 @@ footer {
 }
 
 footer ul.footer-box {
-  margin: 5px 20px 0 40px;
+  margin: 5px 20px 0 25px;
   border-radius: 12px;
   background-color: #453a5e;
   width: 92%;

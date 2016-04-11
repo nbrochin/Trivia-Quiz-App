@@ -13,7 +13,8 @@ $(document).ready(function(){
   }, {
     question: "What was the first message sent by Samuel Morse's telegraph machine?",
     choices: [" Save our souls", " What hath God wrought?", " Mr. Watson, come here!", " Now is the time for all good men."],
-    correctAnswer: 1
+    correctAnswer: 1,
+    point_value: 10
   }, {
     question: "This inventor of the Optical Analysis System was also the world's first Hispanic female astronaut. What is her name?",
     choices: [ " Ellen Ochoa", " Sally Ride", " Linda Chavez", " Margaret Kingsley"],
@@ -23,6 +24,18 @@ $(document).ready(function(){
     question: "Which Dutch inventor introduced the telescope to the world?",
     choices: [" Hans Schopol", " Hans Lippershy", " Johann Bach", " Hans Holbein"],
     correctAnswer: 1,
+    point_value: 20
+
+    }, {
+    question: "The Niepce Crater on the Moon was named in recognition of the famous inventor Joseph Niepce. What did Niepce invent?",
+    choices: [ " Telescope", " Camera", " Microscope", " Lunar landing module"],
+    correctAnswer: 1,
+    point_value: 20
+
+   }, {
+  	question: "The invention of the refrigerator made a significant improvement to our standard of living. Who is credited with the invention?",
+    choices: [" Carl von Linde", " Michael Faraday", " Oliver Evans", " Joseph Beuys"],
+    correctAnswer: 2,
     point_value: 20
   }];
   
@@ -135,19 +148,18 @@ $(document).ready(function(){
           $('input[value='+selections[questionCounter]+']').prop('checked', true);
         }
         
-        // Controls display of 'prev' button
-        if(questionCounter === 1){
-          $('#prev').show();
-        } else if(questionCounter === 0){
+        // // Controls display of 'prev' button
+        // if(questionCounter === 1){
+        //   $('#prev').show();
+        // } else if(questionCounter === 0){
           
-          $('#next').show();
-        }
+        //   $('#next').show();
+        // }
       }else {
         var scoreElem = displayScore();
         quiz.append(scoreElem).fadeIn();
         $('#next').hide();
         $('#start').show();
-        console.log(questionCounter)
       }
     });
   }
