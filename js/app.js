@@ -50,31 +50,19 @@ $(document).ready(function(){
   $('#next').on('click', function (e) {
     e.preventDefault();
     
-    // Suspend click listener during fade animation
+    // Suspend click listener during question transition
     if(quiz.is(':animated')) {        
       return false;
     }
     choose();
     
-    // If no user selection, progress is stopped
+    // If no answer is selected, progress is stopped
     if (isNaN(selections[questionCounter])) {
       alert('Please choose an answer!');
     } else {
       questionCounter++;
       displayNext();
     }
-  });
-  
-  // Click handler for the 'prev' button
-  $('#prev').on('click', function (e) {
-    e.preventDefault();
-    
-    if(quiz.is(':animated')) {
-      return false;
-    }
-    choose();
-    questionCounter--;
-    displayNext();
   });
   
   // Click handler for the 'Start Over' button
@@ -92,8 +80,8 @@ $(document).ready(function(){
   
   // Creates and returns the div that contains the questions and 
   // the answer selections
-  function createQuestionElement(index) {
-    var qElement = $('<div class="trivia-questions">', {
+  function createQuestioncontainer(index) {
+    var qContainer = $('<div class="trivia-questions">', {
       id: 'question-number'
     });
     
@@ -101,12 +89,12 @@ $(document).ready(function(){
   	$('#question-number.question-01').append(questionNo);
     
     var question = $('<div class="question-text">').append(questions[index].question);
-    qElement.append(question);
+    qContainer.append(question);
     
     var radioButtons = createRadios(index);
-    qElement.append(radioButtons);
+    qContainer.append(radioButtons);
     
-    return qElement;
+    return qContainer;
   }
   
   // Creates a list of the answer choices as radio inputs
@@ -142,19 +130,12 @@ $(document).ready(function(){
 	  $(".fa-circle:nth-child(2)").css("color", "#778DA3" );
       
       if(questionCounter < questions.length){
-        var nextQuestion = createQuestionElement(questionCounter);
+        var nextQuestion = createQuestioncontainer(questionCounter);
         quiz.append(nextQuestion).fadeIn();
         if (!(isNaN(selections[questionCounter]))) {
           $('input[value='+selections[questionCounter]+']').prop('checked', true);
         }
         
-        // // Controls display of 'prev' button
-        // if(questionCounter === 1){
-        //   $('#prev').show();
-        // } else if(questionCounter === 0){
-          
-        //   $('#next').show();
-        // }
       }else {
         var scoreElem = displayScore();
         quiz.append(scoreElem).fadeIn();
@@ -186,8 +167,8 @@ $(document).ready(function(){
 
     }
     
-    score.append('<h2>You answered ' + numCorrect + ' questions out of ' +
-                 questions.length + ' correctly. That stinks.</h2>');
+    score.append('<h2>You\'ve answered ' + numCorrect + ' questions out of ' +
+                 questions.length + ' correctly. Better luck next time.</h2>');
     return score;
   }
   
