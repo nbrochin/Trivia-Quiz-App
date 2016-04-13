@@ -51,7 +51,7 @@ $(document).ready(function(){
     point_value: 10
   }, {
     question: "What is the name of the Jetsons' robotic housekeeper?",
-    choices: [" Judy", " Roseanne", " Mariana", " Rosie."],
+    choices: [" Judy", " Roseanne", " Mariana", " Rosie"],
     correctAnswer: 3,
     point_value: 10
   }, {
@@ -231,7 +231,7 @@ $(document).ready(function(){
     $('ul.answer-text').html(selections[0] + ' -- ' + questions_jetsons[0].correctAnswer + ' 01. ' + question01 + '<br />' + selections[1] + ' -- ' + questions_jetsons[1].correctAnswer + ' 02. ' + question02 + '<br />' + selections[2] + ' -- ' + questions_jetsons[2].correctAnswer + ' 03. ' + question03 + '<br />' + selections[3] + ' -- ' + questions_jetsons[3].correctAnswer + ' 04. ' + question04 + '<br />' + selections[4] + ' -- ' + questions_jetsons[4].correctAnswer + ' 05. ' + question05 + '<br />' + selections[5] + ' -- ' + questions_jetsons[5].correctAnswer + ' 06. ' + question06 + '<br />' + selections[5] + ' -- ' + questions_jetsons[6].correctAnswer + ' 06. ' + question07);
 
    score.append('<h2>You\'ve answered ' + calculatedScore[0] + ' questions out of ' +
-   questions.length + ' correctly. Your total score is ' + calculatedScore[1] + '.</h2></div>');
+   questions_jetsons.length + ' correctly. Your total score is ' + calculatedScore[1] + '.</h2></div>');
     return score;
     }
  
@@ -239,7 +239,7 @@ $(document).ready(function(){
 			event.preventDefault();
 			$('header ul li.total-score').text("0");
 			$('.q-score-css').text(" 0pts");
-			$('header ul li.topic-title').text('FAMOUS INVENTORS');
+			$('header ul li.topic-title').text('JETSONS TRIVIA');
 			$('header ul li.topic-title').css('animation-play-state','paused');
 			$('.fa-circle:nth-child(2)').css("color", "#778DA3" );
 			createQuestioncontainer(0);
