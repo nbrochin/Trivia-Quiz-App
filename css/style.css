@@ -232,7 +232,7 @@ h1 {
 
 .control-panel {
 	background-color: #fbfbfb;
-	width: 1147px;
+	width: 1110px;
   margin: 15px 20px 0 54px;
   padding: 25px;
   opacity: 0.8;
@@ -251,7 +251,7 @@ h1 {
 }
 
 .question-text {
-	width: 1060px;
+	width: 1028px;
   font-size: 32px;
   font-weight: 500;
   font-family: 'Museo Slab' !important;
@@ -279,8 +279,15 @@ h1 {
 }
 
 ul.answer-text:first-child  {
-  color: #993300;
-  text-align: right;
+  color: #777777;
+  text-align: left;
+  font-size: 20px;
+  line-height: 22px;
+}
+
+ul.answer-text:last-child  {
+  color: #777777;
+  text-align: left;
 }
 
 .answer-text li span {
@@ -321,13 +328,26 @@ div.answer-choices ul.answer-text li:last-child i {
   position: relative;
 }*/
 
-.q-dots-css {
+ul#question-dots {
+  padding: 0;
+  -webkit-padding-start: 4px !important;
+  margin: 0 36px;
+}
+
+ul#question-dots li {
   display: inline;
+}
+
+ul#question-dots li i {
   font-size: 18pt;
-  margin: 0 40px;
+  margin: 0px;
   opacity: 0.75;
   color: #778DA3;
   letter-spacing: 0.4em;
+}
+
+.panel-row {
+  display: inline-block;
 }
 
 .q-score-css {
@@ -389,7 +409,7 @@ footer {
 }
 
 footer ul.footer-box {
-  margin: 5px 20px 0 25px;
+  margin: 5px 20px 0 35px;
   border-radius: 12px;
   background-color: #453a5e;
   width: 92%;

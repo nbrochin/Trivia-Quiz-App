@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="css/style.css"/>
 	</head>
 	<body>
-	<div class="big-wrapper">
+	<div id="quiz">
 
 		<header> <!--Header -->	  
 			<ul><li class="app-instructions"><a href="#">HOW TO PLAY</a></li></ul>
@@ -41,10 +41,10 @@
 			<section class="control-panel"> <!-- Guessing Section -->
 
 				<div id="question-number" class="question-01"><h2></h2></div>
-				<div id="question-dots" class="q-dots-css" <i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i><i class="fa fa-circle"></i></div>
-				<div id="question-score" class="q-score-css"> +15 pts</div>
+				<div class="panel-row"><ul id="question-dots"><li> <i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li></ul></div>
+				<div id="question-score" class="q-score-css">+</div>
 				<div id="start-game" class="start-game-css"><button class="btn btn-primary">NEW GAME</button></div>
-				<div id="start-game" class="start-game-css"><button class='btn btn-warning' id='next'>NEXT QUESTION</button></div>
+				<div id="" class="start-game-css"><button class='btn btn-warning' id='next'>NEXT QUESTION</button></div>
 	<!-- Questions Section -->
 	  <div class="trivia-questions"> 
 				<section id="QA-holder">
@@ -84,7 +84,7 @@
 					<ol>
 						<li>1. Press the <strong>new game</strong> button in the upper right hand corner to begin a game.</li>
 						<li>2. A question will appear, shortly followed by four possible answers.<strong></strong></li>
-						<li>3. Each question is worth between 5 and 25 points depending on its level of difficulty.<strong></strong></li>
+						<li>3. Each question is worth between 5 and 25 points depending on its level of difficulty. The colored dots will indicate how difficult a question is: green is the easiest, followed by blue, orange red and then black.<strong></strong></li>
 						<li>4. You will have 10 seconds to answer each question, after which the next question will appear.<strong></strong></li>
 					</ol>
 					<p>So, are you ready? Good luck!</p>
@@ -95,7 +95,7 @@
 		</div>
 		<!-- JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script src="https://use.typekit.net/luu5hzh.js"></script>
+<!-- 		<script src="https://use.typekit.net/luu5hzh.js"></script> -->
 		<script>try{Typekit.load({ async: true });}catch(e){}</script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
