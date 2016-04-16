@@ -18,14 +18,16 @@
 
 		<header> <!--Header -->	  
 			<ul><li class="app-instructions"><a href="#">HOW TO PLAY</a></li></ul>
-			<!-- Top Navigation -->
+			<!-- QUIZ TOPIC CHOICES -->
+
+
 			<ul class="left-header-box">
 					<li class="app-title">QUIZ BUZZ</li>
 					<div class='visible'>
-					<li class="topic-title">JETSONS TV TRIVIA</a></li>
-					<li class="topic-title">WORLD CAPITOLS</li>
-	 				<li class="topic-title">PLANT LIFE OF DELAWARE</li>
-	 				<li class="topic-title">FAMOUS INVENTORS</li>
+					<li class="topic-title" data-set="1">JETSONS TV TRIVIA</li>
+					<li class="topic-title"><a id="capitols" class="topic">WORLD CAPITALS</a></li>
+	 				<li class="topic-title" data-set="2"><a id="delaware" class="topic">PLANT LIFE OF DELAWARE</a></li>
+	 				<li class="topic-title" data-set="0">FAMOUS INVENTORS</li>
 					</div>
 			</ul>
 
@@ -52,6 +54,7 @@
 	  </div>
 			<div class="answer-choices">
 				<ul class="answer-text">
+					<li>
 					
 						<!-- <li><i class="fa fa-square"></i><span>Florence, Italy</span></li>
 						<li><i class="fa fa-square"></i><span>Venice, Italy</span></li>

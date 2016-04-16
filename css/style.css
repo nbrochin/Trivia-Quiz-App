@@ -61,7 +61,11 @@ body {
 a {
 	text-decoration: none;
 	color: #453a5e;
-  margin-left: 20px;
+}
+
+a.topic {
+  text-decoration: none;
+  color: #ffffff;
 }
 
 a:focus, a:hover {
@@ -95,7 +99,7 @@ header ul.left-header-box {
   margin: 10px 20px 0 40px;
   border-radius: 12px;
   background-color: #453a5e;
-  width: 70%;
+  width: 880px;
   padding: 32px;
 }
 
@@ -104,7 +108,7 @@ header ul.right-header-box {
   margin: 10px 20px 0 0px;
   border-radius: 12px;
   background-color: #453a5e;
-  width: 20%;
+  width: 210px;
   padding: 15px;
 }
 
@@ -281,8 +285,17 @@ h1 {
 ul.answer-text:first-child  {
   color: #777777;
   text-align: left;
-  font-size: 20px;
+  font-size: 16px;
+  line-height: 21px;
+  font-family: 'Lato', sans-serif;
+}
+
+ul.answer-text li p  {
+  color: #777777;
+  text-align: left;
+  font-size: 16px;
   line-height: 22px;
+  font-weight: 300;
 }
 
 ul.answer-text:last-child  {
@@ -412,7 +425,7 @@ footer ul.footer-box {
   margin: 5px 20px 0 35px;
   border-radius: 12px;
   background-color: #453a5e;
-  width: 92%;
+  width: 1110px;
   height: 136px;
   padding: 15px;
   display: block;
@@ -438,7 +451,6 @@ footer ul li.high-score {
 /*---------------------------------------------------------------------------------
    TOPIC ANIMATION
 ---------------------------------------------------------------------------------*/
-
 
 .visible {
   font-weight:600;
