@@ -25,7 +25,7 @@
     choices: [" Hans Schopol", " Hans Lippershy", " Johann Bach", " Hans Holbein"],
     correctAnswer: 1,
     point_value: 20
-
+  },
      {
     question: "The Niepce Crater on the Moon was named in recognition of the famous inventor Joseph Niepce. What did Niepce invent?",
     choices: [ " Telescope", " Camera", " Microscope", " Lunar landing module"],
