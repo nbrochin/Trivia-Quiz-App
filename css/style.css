@@ -88,7 +88,6 @@ header {
 }
 
 header ul li {
-	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 1.2em;
   color: #453a5e;
@@ -118,6 +117,14 @@ header ul li.app-title {
   text-align: left;
   margin-left: 25px;
 }
+
+header ul li.app-title span {
+  font-size: 28px;
+  color: #f0ad4e;
+  text-align: left;
+  font-weight: 100;
+}
+
 
 header ul li.topic-title {
   font-size: 50px;
@@ -308,9 +315,8 @@ ul.answer-text:last-child  {
   margin-left: 20px;
 }
 
-.answer-text li i {
-  font-weight: 500;
-  margin-left: 20px;
+.answer-text em {
+  font-weight: 300;
 }
 
 .answer-text li {

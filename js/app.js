@@ -75,8 +75,87 @@
     choices: [" Cosmo's Rockets", " Spacely Sprockets", " Spacely's Rockets", " Astro-Glide"],
     correctAnswer: 1,
     point_value: 10
+  }],
+
+  [ {
+    question: "Which of the following is NOT a capital city?",
+    choices: [' Jakarta', ' New Delhi', ' Budapest', ' Antwerp'],
+    correctAnswer: 3,
+    point_value: 15
+  }, {
+    question: "What is the capital city of Venezuela? ",
+    choices: [" Bogota", " Caracas", " Lima", " Buenos Aires"],
+    correctAnswer: 1,
+    point_value: 10
+  }, {
+    question: "Which of the following cities is a capital city on the African continent?",
+    choices: [" Nairobi", " Algiers", " Cairo", " All of the above"],
+    correctAnswer: 3,
+    point_value: 10
+  }, {
+    question: "Djibouti is the capital city of which African nation?",
+    choices: [ " Gambia", " Chad", " Djibouti", " Ghana"],
+    correctAnswer: 2,
+    point_value: 5
+  }, {
+    question: "Which of the following is the capital of Equatorial Guinea?",
+    choices: [" Malabo", " Asmara", " Monrovia", " Lilongwe"],
+    correctAnswer: 0,
+    point_value: 25
+
+    }, {
+    question: "Which of these European capital cities has the largest population? ",
+    choices: [ " Lisbon", " Vienna", " Helsinki", " Minsk"],
+    correctAnswer: 3,
+    point_value: 15
+
+   }, {
+  	question: "What is the capital of the Ukraine?",
+    choices: [" Budapest", " Kiev", " Tblisi", " Minsk"],
+    correctAnswer: 1,
+    point_value: 20
+  }],
+
+  [{
+    question: "In what year did Pete Maravich win his only scoring title?",
+    choices: [' 1976', ' 1978', ' 1977', ' 1975'],
+    correctAnswer: 2,
+    point_value: 15
+  }, {
+    question: "Who among these players below won the most NBA scoring titles?",
+    choices: [" Kareem-Abdul Jabbar", " Bob McAdoo", " Jerry West", " George Gervin"],
+    correctAnswer: 3,
+    point_value: 10
+  }, {
+    question: "Which of the players from the list below never won an NBA scoring title?",
+    choices: [" Larry Bird", " Bernard King", " Elvin Hayes", " Alex English"],
+    correctAnswer: 0,
+    point_value: 10
+  }, {
+    question: "Which NBA player won scoring titles in both 2000 and 2005?",
+    choices: [ " Kobe Bryant", " Shaquille O'Neal", " Alan Iverson", " Tracy McGrady"],
+    correctAnswer: 1,
+    point_value: 15
+  }, {
+    question: "Who was the first player to win a second NBA scoring championship?",
+    choices: [" George Mikan", " Bob Petit", " Paul Arizin", " Neal Johnston"],
+    correctAnswer: 0,
+    point_value: 25
+
+    }, {
+    question: "Who won the NBA scoring title in 1994? ",
+    choices: [ " Michael Jordan", " Hakeem Olajuwon", " David Robinson", " Shaquille O'Neal"],
+    correctAnswer: 2,
+    point_value: 15
+
+   }, {
+  	question: "Wilt Chamberlain owns the five highest point per game totals in the history of the NBA. Who owns the 6th highest?",
+    choices: [" Rick Barry", " Kobe Bryant", " Michael Jordan", " Bob McAdoo"],
+    correctAnswer: 0,
+    point_value: 20
   }]
   ];
+
  
   var questionSet = questions[0];
   var questionCounter = 0; //Tracks question number
@@ -85,18 +164,15 @@
   var quiz = $('.trivia-questions'); //Quiz div object
   
 
-  $(".visible li").click(function() {
-  	questionSet = questions[$(this).data("set")];
-  	startGame();
-  	console.log(questionSet);
-  	console.log($(this).data("set"));
-
-  })
-
-
   // Display initial question
   displayNext();
   
+  $(".visible li.topic-title").click(function() {
+  	questionSet = questions[$(this).data("set")];
+  	startGame();
+  	// console.log($(this).data("set"));
+  	
+  })
 
   // Click handler for the 'next' button
   $('#next').on('click', function (e) {
@@ -117,6 +193,7 @@
     }
   });
   
+
   function calculateScore() {
   	var numCorrect = 0;
     var totalPoints = 0;
@@ -130,8 +207,8 @@
     }
     return [numCorrect, totalPoints];
 
-
   }
+
 
   // Creates and returns the div that contains the questions and 
   // the answer selections
@@ -139,19 +216,29 @@
     var qContainer = $('<div class="trivia-questions">', {
       id: 'question-number'
     });
-
     var currentScore = calculateScore();
     var questionPtvalue = questionSet[index].point_value;
+    for (var i = 0; i < questionSet[index].choices.length; i++) {
     $('#question-score.q-score-css').text((questionPtvalue) + 'pts');
+    }
+    
 
-    if (selections[index] === questionSet[index].correctAnswer) {
-    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#00ff33');
+
+    // questionSet = questions[0];
+    choices = questions[0,0].correctAnswer;
+
+
+    if (questionSet[i].choices[selections[i]] === questionSet[i].correctAnswer) {
+    	    // if (5*3 === 15) {
+    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#1e6c06');
     }     
-	
-	else  {
-    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#ff3300');
+
+	else   {
+    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#66000a');
  	}
-       
+ //    console.log(questionSet[i].choices[selections[i]]);
+	// console.log(questionSet[index].correctAnswer);
+
     var questionNo = $('<h2>QUESTION ' + 0 + (index + 1) + ':</h2>');
   	$('#question-number.question-01').html(questionNo);
     
@@ -169,20 +256,14 @@
 
   // places user choice into an array
   function choose() {
-    selections[questionCounter] = +$('input[name="answer"]:checked').val();
+    selections[questionCounter] = + $('input[name="answer"]:checked').val();
     
   }
-  
+  		
   // Displays next question
   function displayNext(index) {
     quiz.fadeOut(function() {
       $('.trivia-questions').hide();
-      // $('p.cheese').hide();
-      // $('.question-01 h2').hide();
-      // $('header ul li.total-score').text("05");
-	  // $('.q-score-css').text("+10 pts");
-      
-
 
 
       if(questionCounter < questionSet.length){
@@ -191,11 +272,14 @@
         if (!(isNaN(selections[questionCounter]))) {
           $('input[value='+selections[questionCounter]+']').prop('checked', true);
           $('ul.answer-text').hide();
+
         }
         
       }else {
         var scoreDiv = displayScore();
         quiz.append(scoreDiv).fadeIn();
+        $('ul.answer-text').show();
+
         // $('#next').hide();
         // $('#start').show();
       }
@@ -218,6 +302,7 @@
     }
 
     return radioList;
+
   }
 
   // Calculates number of correct answers and creates a message to be displayed
@@ -227,11 +312,30 @@
     var calculatedScore = calculateScore();
     currentScore = calculateScore();
     $('header ul li.total-score').text(currentScore[1]);
+
+   
+    var trueTxtcolr = "";
+    var falseTxtcolr = "";
     var result = "";
     for (var i=0; i < questionSet.length; i++) {
-    	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + 'Your Answer: ' + questionSet[i].choices[selections[i]]  +  ', <element style="color: black;">Correct Answer: </element>' + '<element style="color: #22aa22;">' + questionSet[i].choices[questionSet[i].correctAnswer] + '.</element><br />';
+
+    	 if (questionSet[i].choices[questionSet[i].correctAnswer] === questionSet[i].choices[selections[i]]) {
+    	trueTxtcolr = '#22aa22';
+    	falseTxtcolr = '#660011';
+
+    	}
+
+    	else {
+    	trueTxtcolr = 'purple';
+    	falseTxtcolr = 'purple';
+}
+    	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + 'Your Answer: ' + questionSet[i].choices[selections[i]]  +  ', <em>Correct Answer:</em> ' + '<element style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[questionSet[i].correctAnswer] + '.</element><br />';
+    	// console.log(questionSet[i].choices[questionSet[i].correctAnswer]);
+    	// console.log(questionSet[i].choices[selections[i]]);
+    	
 
     }
+
   	$('ul.answer-text').html(result);
     	// $('ul.answer-text').html('0' + i + '.' + question01 + '<br />' + 'Your Answer: ' + selections[i] + ' Correct Answer: ' + questionSet[i].correctAnswer + '<br />')
     
@@ -250,13 +354,20 @@
   	event.preventDefault();
 			// $('header ul li.total-score').text("18");
 			$('.q-score-css').text(" 0pts");
-			$('header ul li.topic-title').text('JETSONS TRIVIA');
-			$('header ul li.topic-title').css('animation-play-state','paused');
-			createQuestioncontainer(0);
+			// $('header ul li.topic-title').text('JETSONS TRIVIA');
+			// $('header ul li.topic-title').css('animation-play-state','paused');
+			// createQuestioncontainer();
+			createRadios(0);
 			$('.answer-text').hide();
 			questionCounter = 0;
 			selections = [];
+			// questionSet = questions[0];
 			displayNext();
+			calculateScore();
+			$('ul#question-dots li i').css('color', '#778DA3');
+
+
+
   }
 
   /*--- Display information modal box ---*/
@@ -267,27 +378,10 @@
    		$(".overlay").show();
 
   	});
-/*--- Set and Maintain High Score List ---*/
 
-	var highScore = 1;
-	var myScore = calculateScore();
-	parseInt(localStorage.setItem('highScore', '22'));
-	var highScore = parseInt(localStorage.getItem('highScore'));
-	localStorage.getItem('highScore', 'myScore')
-
-			
-	console.log(highScore);
-	console.log(myScore);
-
-	return [myScore, highScore]
-
-
-
-		
-
-  	/*--- Hide information modal box ---*/
+ 		/*--- Hide information modal box ---*/
   	$(".close").click(function(){
-  		$(".overlay").fadeOut(500);
+  		$(".overlay").fadeOut(600);
 			$(".control-panel").show();
 			$("ul.footer-box").show();
 			$(".big-wrapper").css("opacity", "0.9");
@@ -295,4 +389,41 @@
 
 
 	});
+/*--- Set and Maintain High Score List ---*/
+
+
+
+function SetHighScores() {
+localStorage.HighScores = myHighScore;
+var myHighScore = $('li.total-score').val();
+
+}
+
+$('#showHighScore').click(function ShowHighScoreValues() {
+myHighScore = $('li.total-score').val();
+$('li#high-score-container.high-score').html('High Scores:' + myHighScore);
+
+});
+
+// ShowHighScoreValues();
+
+$('#showHighScore').click(function clearStorage() {
+localStorage.clear();
+arrHighScores = []; // reset incase the page isn't refreshed
+})
+
+
+	// var myScore = calculateScore();
+	// parseInt(localStorage.setItem('highScore', '22'));
+	// var highScore = parseInt(localStorage.getItem('highScore'));
+	// localStorage.getItem('highScore', 'myScore')
+
+			
+	// console.log(highScore);
+	// console.log(myScore);
+
+	// return [myScore, highScore]
+		
+
+  	
 });
