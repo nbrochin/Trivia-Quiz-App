@@ -308,7 +308,7 @@ h1 {
 }
 
 ul.answer-text:first-child  {
-  color: #777777;
+  color: #555555;
   text-align: left;
   font-size: 16px;
   line-height: 21px;
@@ -316,7 +316,7 @@ ul.answer-text:first-child  {
 }
 
 ul.answer-text li p  {
-  color: #777777;
+  color: #555555;
   text-align: left;
   font-size: 16px;
   line-height: 22px;
@@ -324,7 +324,7 @@ ul.answer-text li p  {
 }
 
 ul.answer-text:last-child  {
-  color: #777777;
+  color: #555555;
   text-align: left;
 }
 
