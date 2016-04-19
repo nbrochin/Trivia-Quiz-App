@@ -189,7 +189,7 @@
       alert('Please choose an answer!');
     } else {
       questionCounter++;
-      displayNext();
+      displayNext(questionCounter);
     }
   });
   
@@ -228,16 +228,8 @@
     choices = questions[0,0].correctAnswer;
 
 
-    if (questionSet[i].choices[selections[i]] === questionSet[i].correctAnswer) {
-    	    // if (5*3 === 15) {
-    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#1e6c06');
-    }     
-
-	else   {
-    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#66000a');
- 	}
- //    console.log(questionSet[i].choices[selections[i]]);
-	// console.log(questionSet[index].correctAnswer);
+   
+    
 
     var questionNo = $('<h2>QUESTION ' + 0 + (index + 1) + ':</h2>');
   	$('#question-number.question-01').html(questionNo);
@@ -262,6 +254,19 @@
   		
   // Displays next question
   function displayNext(index) {
+  	 if (index > 0) {
+    	if (selections[index-1] === questionSet[index-1].correctAnswer) {
+    	    // if (5*3 === 15) {
+    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#1e6c06');
+    }     
+
+	else   {
+    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#66000a');
+ 	}
+ 	console.log(selections[index-1]);
+	console.log(questionSet[index-1].correctAnswer);
+ }
+
     quiz.fadeOut(function() {
       $('.trivia-questions').hide();
 
@@ -279,6 +284,7 @@
         var scoreDiv = displayScore();
         quiz.append(scoreDiv).fadeIn();
         $('ul.answer-text').show();
+        SetHighScores();
 
         // $('#next').hide();
         // $('#start').show();
@@ -320,18 +326,15 @@
     for (var i=0; i < questionSet.length; i++) {
 
     	 if (questionSet[i].choices[questionSet[i].correctAnswer] === questionSet[i].choices[selections[i]]) {
-    	trueTxtcolr = '#22aa22';
-    	falseTxtcolr = '#660011';
+    	trueTxtcolr = '#1E6C06';
+    	falseTxtcolr = '#66000A';
 
     	}
 
     	else {
-    	trueTxtcolr = 'purple';
-    	falseTxtcolr = 'purple';
+    	trueTxtcolr = '#66000A';
 }
-    	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + 'Your Answer: ' + questionSet[i].choices[selections[i]]  +  ', <em>Correct Answer:</em> ' + '<element style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[questionSet[i].correctAnswer] + '.</element><br />';
-    	// console.log(questionSet[i].choices[questionSet[i].correctAnswer]);
-    	// console.log(questionSet[i].choices[selections[i]]);
+    	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<element style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</element><br />' + '<em>Correct Answer:</em> ' + questionSet[i].choices[questionSet[i].correctAnswer] + '.<br /><hr>';
     	
 
     }
@@ -371,10 +374,9 @@
   }
 
   /*--- Display information modal box ---*/
- 		$(".app-instructions").click(function(){
-		$(".control-panel").hide();
-		$("ul.footer-box").hide();
-		$('body').css('background-image', 'url(../Triva-Quiz-App/images/galilleo-bkgd-dk.jpg) no-repeat 0 0');
+ 		$("#howToplay").click(function(){
+		$("#quiz").css("opacity", "0.2");
+		// $("ul.footer-box").hide();
    		$(".overlay").show();
 
   	});
@@ -384,8 +386,8 @@
   		$(".overlay").fadeOut(600);
 			$(".control-panel").show();
 			$("ul.footer-box").show();
-			$(".big-wrapper").css("opacity", "0.9");
-			$('body').css('background', 'url(../Triva-Quiz-App/images/galilleo-bkgd.jpg) no-repeat 0 0');
+			$("#quiz").css("background-color", "");
+			$("#quiz").css("opacity", "1.0");
 
 
 	});
@@ -394,22 +396,26 @@
 
 
 function SetHighScores() {
-localStorage.HighScores = myHighScore;
-var myHighScore = $('li.total-score').val();
-
+	var myHighScore = $('li.total-score').text();
+	var previousHS = (localStorage.HighScore ? localStorage.HighScore : 0)
+	if (myHighScore > previousHS) {
+		localStorage.setItem('HighScore', myHighScore);
+	}
+	
+	console.log(myHighScore);
 }
 
 $('#showHighScore').click(function ShowHighScoreValues() {
-myHighScore = $('li.total-score').val();
-$('li#high-score-container.high-score').html('High Scores:' + myHighScore);
+var previousHS = (localStorage.HighScore ? localStorage.HighScore : 0)
+$('li#high-score-container.high-score').html('HIGH SCORE: ' + previousHS + 'pts');
 
 });
 
 // ShowHighScoreValues();
 
-$('#showHighScore').click(function clearStorage() {
+$('#clearStorage').click(function clearStorage() {
 localStorage.clear();
-arrHighScores = []; // reset incase the page isn't refreshed
+$('li#high-score-container.high-score').html('HIGH SCORE: 00');
 })
 
 

@@ -38,14 +38,12 @@ body {
 	border-radius: 4px;
 	}
 
-  .big-wrapper {
-  	position: relative;
-  	width: 1280px;
-  	background-color: "black";
-    display: inherit;
-    opacity: 1.0;
-    z-index: 0001;
-  	}
+  hr {
+    margin-top: 14px;
+    margin-bottom: 14px;
+    border: 0;
+    border-top: 1px solid #ccc;
+}
 
 #QA-holder {
   background-color: #fbfbfb;
@@ -61,6 +59,27 @@ body {
 a {
 	text-decoration: none;
 	color: #453a5e;
+}
+
+a.footer-links {
+  text-decoration: none;
+  color: #c3e43a;
+}
+
+a.footer-links-sm {
+  text-decoration: none;
+  color: #c3e43a;
+  font-size: 14px;
+}
+
+a.footer-links:visited, .footer-links-sm:visited {
+  text-decoration: none;
+  color: #a996b5;
+}
+
+a.footer-links:hover, .footer-links-sm:hover {
+  text-decoration: none;
+  color: #a1d43c;
 }
 
 a.topic {
@@ -186,7 +205,6 @@ h1 {
 	text-align: center;
 	font-size: 2.4em;
 	font-weight: 300;
-	opacity: 0.8;
 	background: #453a5e;
 }
 
@@ -246,11 +264,11 @@ h1 {
 	width: 1110px;
   margin: 15px 20px 0 54px;
   padding: 25px;
-  opacity: 0.8;
+  opacity: 0.7;
   box-sizing: border-box;
   display: inline-block;
   border-radius: 12px;
-  z-index: 999;
+  z-index: 000;
 }
 
 .trivia-questions {
@@ -313,6 +331,12 @@ ul.answer-text:last-child  {
 .answer-text li span {
   font-weight: 500;
   margin-left: 20px;
+}
+
+#quiz {
+  background-color: ;
+  display: inherit;
+  z-index: 444;
 }
 
 .answer-text em {
@@ -404,6 +428,13 @@ ul#question-dots li i {
 
 }
 
+.btn-primary:hover {
+    color: #fff;
+    background-color: #453a5e;
+    border-color: #453a2a;
+
+}
+
 h3 {
 	margin: 0 auto;
 	padding: 1em 0.4em;
@@ -432,14 +463,14 @@ footer ul.footer-box {
   border-radius: 12px;
   background-color: #453a5e;
   width: 1110px;
-  height: 136px;
+  height: 100px;
   padding: 15px;
   display: block;
 }
 
 footer ul li.app-instructions {
-  font-size: 28px;
-  color: #c3e43a;
+  font-size: 18px;
+  color: #eeeeee;
   text-align: left;
   margin-left: 25px;
   display: inline;
