@@ -1,5 +1,9 @@
   $(document).ready(function(){
 
+  // ADD QUESTION SETS HERE
+
+  // FAMOUS INVENTORS 
+
   var questions = [[
   { question: "Nikola Tesla's greatest contribution to science was which of the following achievements?",
     choices: [' AC induction motor', ' The light bulb with tungsten filament', ' Underground electrical wires', ' The 3-pronged electrical outlet'],
@@ -38,6 +42,9 @@
     correctAnswer: 2,
     point_value: 25
   }],
+
+    // THE JETSONS 
+
   [ {
     question: "Meet George Jetson.... His boy ____",
     choices: [' George, Jr.', ' Cosmo', ' Elroy', ' Astro'],
@@ -77,6 +84,8 @@
     point_value: 10
   }],
 
+  // WORLD CAPITALS
+
   [ {
     question: "Which of the following is NOT a capital city?",
     choices: [' Jakarta', ' New Delhi', ' Budapest', ' Antwerp'],
@@ -115,6 +124,8 @@
     correctAnswer: 1,
     point_value: 20
   }],
+
+  // NBA SCORING CHAMPS
 
   [{
     question: "In what year did Pete Maravich win his only scoring title?",
@@ -157,24 +168,23 @@
   ];
 
  
-  var questionSet = questions[0];
-  var questionCounter = 0; //Tracks question number
-  var selections = []; //Array containing user choices
+  var questionSet = questions[0]; // LOADS CORRECT QUIZ
+  var questionCounter = 0; // TRACKS QUESTION NUMBER
+  var selections = []; // CREATES ARRAY WITH USER CHOICES
   var choices = questions[0,0].correctAnswer;
-  var quiz = $('.trivia-questions'); //Quiz div object
+  var quiz = $('.trivia-questions'); //Q & A AREA
   
 
-  // Display initial question
+  // DISPLAY INITIAL QUESTION - LOADED FROM ARRAYS ABOVE
+
   displayNext();
   
   $(".visible li.topic-title").click(function() {
   	questionSet = questions[$(this).data("set")];
-  	startGame();
-  	// console.log($(this).data("set"));
-  	
+  	startGame();  	
   })
 
-  // Click handler for the 'next' button
+  // NEXT BUTTON, HANDLER - 
   $('#next').on('click', function (e) {
     e.preventDefault();
     
@@ -184,7 +194,8 @@
     }
     choose();
     
-    // If no answer is selected, progress is stopped
+    // ERROR IF NEXT BUTTON IS PUSHED WITHOUT AN ANSWER CHOICE
+    
     if (isNaN(selections[questionCounter])) {
       alert('Please choose an answer!');
     } else {
