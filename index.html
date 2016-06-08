@@ -15,6 +15,7 @@
 	</head>
 	<body>
 	<div id="quiz">
+	
 
 		<header> <!--Header -->	  
 			
@@ -33,19 +34,21 @@
 
 			</ul>
 
-			<!-- <ul class="right-header-box">
-					
-			</ul> -->
-
 		</header>
 
-
-			<!-- logo text -->
-
-			<section class="control-panel"> <!-- Guessing Section -->
-
+			<section class="control-panel"> 
 				<div id="question-number" class="question-01"><h2></h2></div>
-				<div class="panel-row"><ul id="question-dots"><li> <i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li><li><i class="fa fa-circle"></i></li></ul></div>
+				<div class="panel-row">
+					<ul id="question-dots">
+						<li><i class="fa fa-circle"></i></li>
+						<li><i class="fa fa-circle"></i></li>
+						<li><i class="fa fa-circle"></i></li>
+						<li><i class="fa fa-circle"></i></li>
+						<li><i class="fa fa-circle"></i></li>
+						<li><i class="fa fa-circle"></i></li>
+						<li><i class="fa fa-circle"></i></li>
+					</ul>
+				</div>
 				<div id="question-score" class="q-score-css">+</div>
 				<div id="start-game" class="start-game-css"><button class="btn btn-primary">NEW GAME</button></div>
 				<div id="" class="start-game-css"><button class='btn btn-warning' id='next'>NEXT QUESTION</button></div>
@@ -56,13 +59,8 @@
 	  </div>
 			<div class="answer-choices">
 				<ul class="answer-text">
-					<li>
 					
-						<!-- <li><i class="fa fa-square"></i><span>Florence, Italy</span></li>
-						<li><i class="fa fa-square"></i><span>Venice, Italy</span></li>
-						<li><i class="fa fa-square"></i><span>Dusseldorf, Germany</span></li>
-						<li><i class="fa fa-square"></i><span>Lucerne, Switzerland</span></li> -->
-
+					
   				</section>
 				</ul>
 			</section>	
@@ -73,7 +71,7 @@
 			<ul class="footer-box">
 					
 					<li class="high-score" id="high-score-container">HIGH SCORE:</li>
-					<li class="app-instructions" id="howToplay"><a href="#" class="footer-links">HOW TO PLAY</a></li>
+					<li class="app-instructions" id="howToplay"><a href="#" id="myBtn" class="footer-links">HOW TO PLAY</a></li>
 					<li class="app-instructions" id="showHighScore"><a href="#" class="footer-links-sm">SHOW HIGH SCORE</a></li>
 					<li class="app-instructions" id="clearStorage"><a href="#" class="footer-links-sm">CLEAR</a></li>				
     				
@@ -81,14 +79,14 @@
 		</footer>
 	</div>
 		<!-- Modal Information Box -->
-		<div class="overlay" id="modal">
-			<div class="content">
+		<div id="myModal" class="modal">
+			<div class="modal-content">
 				<h3>How to Play:</h3>
 				<div>
 					<h2>Some Things to Keep in Mind for the Quiz Buzz Trivia Game:</h2>
 					<br />
 					<ol>
-						<li>1. Press the <strong>new game</strong> button in the upper right hand corner to begin a game, or...</li>
+						<li>1. Press the <strong>new game</strong> button in the upper right hand corner to start.</li>
 						<li>2. You can also choose a topic scrolling by in the header to start a game.<strong></strong></li>
 						<li>3. All questions are multiple choice. Make an answer selection and then press the "next question" button to score your quiz and move on.</li>
 						<li>4. Each question is worth between 5 and 25 points depending on level of difficulty. </li>
@@ -98,9 +96,10 @@
 					</ol>
 					<p>Good luck, and be smart!</p>
 					<br />
-					<div class="close" href="#"><button class="btn btn-danger">GOT IT</button></div>
+					<span class="close" href="#"><button class="btn btn-danger">GOT IT</button></span>
 				</div>
 			</div>
+		</div>
 		</div>
 		<!-- JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
