@@ -1,475 +1,412 @@
-  $(document).ready(function(){
+  $(document).ready(function() {
+      var QuizModel = function() {
 
-  // ADD QUESTION SETS HERE
+          this.questions = [
+              [
 
-  // FAMOUS INVENTORS 
+                  {
+                      question: "Nikola Tesla's greatest contribution to science was which of the following achievements?",
+                      choices: [' AC induction motor', ' The light bulb with tungsten filament', ' Underground electrical wires', ' The 3-pronged electrical outlet'],
+                      correctAnswer: 0,
+                      point_value: 5
+                  },
 
-  var questions = [[
-  { question: "Nikola Tesla's greatest contribution to science was which of the following achievements?",
-    choices: [' AC induction motor', ' The light bulb with tungsten filament', ' Underground electrical wires', ' The 3-pronged electrical outlet'],
-    correctAnswer: 0,
-    point_value: 5 }, 
+                  {
+                      question: "Which of the following positions did Benjamin Franklin NOT hold?",
+                      choices: [" Ambassador to France", " Newpaper editor in Philadelphia", " British postmaster for the colonies", " Inventor of the kite"],
+                      correctAnswer: 3,
+                      point_value: 15
+                  }, {
+                      question: "What was the first message sent by Samuel Morse's telegraph machine?",
+                      choices: [" Save our souls", " What hath God wrought?", " Mr. Watson, come here!", " Now is the time for all good men."],
+                      correctAnswer: 1,
+                      point_value: 10
+                  }, {
+                      question: "This inventor of the Optical Analysis System was also the world's first Hispanic female astronaut. What is her name?",
+                      choices: [" Ellen Ochoa", " Sally Ride", " Linda Chavez", " Margaret Kingsley"],
+                      correctAnswer: 0,
+                      point_value: 25
+                  }, {
+                      question: "Which Dutch inventor introduced the telescope to the world?",
+                      choices: [" Hans Schopol", " Hans Lippershy", " Johann Bach", " Hans Holbein"],
+                      correctAnswer: 1,
+                      point_value: 20
+                  }, {
+                      question: "The Niepce Crater on the Moon was named in recognition of the famous inventor Joseph Niepce. What did Niepce invent?",
+                      choices: [" Telescope", " Camera", " Microscope", " Lunar landing module"],
+                      correctAnswer: 1,
+                      point_value: 5
 
-  { question: "Which of the following positions did Benjamin Franklin NOT hold?",
-    choices: [" Ambassador to France", " Newpaper editor in Philadelphia", " British postmaster for the colonies", " Inventor of the kite"],
-    correctAnswer: 3,
-    point_value: 15
-  }, {
-    question: "What was the first message sent by Samuel Morse's telegraph machine?",
-    choices: [" Save our souls", " What hath God wrought?", " Mr. Watson, come here!", " Now is the time for all good men."],
-    correctAnswer: 1,
-    point_value: 10
-  }, {
-    question: "This inventor of the Optical Analysis System was also the world's first Hispanic female astronaut. What is her name?",
-    choices: [ " Ellen Ochoa", " Sally Ride", " Linda Chavez", " Margaret Kingsley"],
-    correctAnswer: 0,
-    point_value: 25
-  }, {
-    question: "Which Dutch inventor introduced the telescope to the world?",
-    choices: [" Hans Schopol", " Hans Lippershy", " Johann Bach", " Hans Holbein"],
-    correctAnswer: 1,
-    point_value: 20
-  },
-     {
-    question: "The Niepce Crater on the Moon was named in recognition of the famous inventor Joseph Niepce. What did Niepce invent?",
-    choices: [ " Telescope", " Camera", " Microscope", " Lunar landing module"],
-    correctAnswer: 1,
-    point_value: 5
-
-   }, {
-  	question: "The invention of the refrigerator made a significant improvement to our standard of living. Who is credited with the invention?",
-    choices: [" Carl von Linde", " Michael Faraday", " Oliver Evans", " Joseph Beuys"],
-    correctAnswer: 2,
-    point_value: 25
-  }],
-
-    // THE JETSONS 
-
-  [ {
-    question: "Meet George Jetson.... His boy ____",
-    choices: [' George, Jr.', ' Cosmo', ' Elroy', ' Astro'],
-    correctAnswer: 2,
-    point_value: 5
-  }, {
-    question: "What is name of George's boss? ",
-    choices: [" Cosmo Spacely", " George Sprocket", " Arturo Spacely", " Elroy Sprocket"],
-    correctAnswer: 0,
-    point_value: 10
-  }, {
-    question: "What is the name of the Jetsons' robotic housekeeper?",
-    choices: [" Judy", " Roseanne", " Mariana", " Rosie"],
-    correctAnswer: 3,
-    point_value: 10
-  }, {
-    question: "What is the name of the annoying family pet?",
-    choices: [ " Astro", " Elroy", " Rufus", " Rocket"],
-    correctAnswer: 0,
-    point_value: 5
-  }, {
-    question: "What is the name of the daughter, Elroy's sister?",
-    choices: [" Jane", " Rosie", " Judy", " Anne"],
-    correctAnswer: 2,
-    point_value: 10
-
-    }, {
-    question: "When she grows up, what does Judy want to be?",
-    choices: [ " Scientist", " Pop star", " School teacher", " Housewife"],
-    correctAnswer: 1,
-    point_value: 5
-
-   }, {
-  	question: "George Jetson is gainfully employed by which firm?",
-    choices: [" Cosmo's Rockets", " Spacely Sprockets", " Spacely's Rockets", " Astro-Glide"],
-    correctAnswer: 1,
-    point_value: 10
-  }],
-
-  // WORLD CAPITALS
-
-  [ {
-    question: "Which of the following is NOT a capital city?",
-    choices: [' Jakarta', ' New Delhi', ' Budapest', ' Antwerp'],
-    correctAnswer: 3,
-    point_value: 15
-  }, {
-    question: "What is the capital city of Venezuela? ",
-    choices: [" Bogota", " Caracas", " Lima", " Buenos Aires"],
-    correctAnswer: 1,
-    point_value: 10
-  }, {
-    question: "Which of the following cities is a capital city on the African continent?",
-    choices: [" Nairobi", " Algiers", " Cairo", " All of the above"],
-    correctAnswer: 3,
-    point_value: 10
-  }, {
-    question: "Djibouti is the capital city of which African nation?",
-    choices: [ " Gambia", " Chad", " Djibouti", " Ghana"],
-    correctAnswer: 2,
-    point_value: 5
-  }, {
-    question: "Which of the following is the capital of Equatorial Guinea?",
-    choices: [" Malabo", " Asmara", " Monrovia", " Lilongwe"],
-    correctAnswer: 0,
-    point_value: 25
-
-    }, {
-    question: "Which of these European capital cities has the largest population? ",
-    choices: [ " Lisbon", " Vienna", " Helsinki", " Minsk"],
-    correctAnswer: 3,
-    point_value: 15
-
-   }, {
-  	question: "What is the capital of the Ukraine?",
-    choices: [" Budapest", " Kiev", " Tblisi", " Minsk"],
-    correctAnswer: 1,
-    point_value: 20
-  }],
-
-  // NBA SCORING CHAMPS
-
-  [{
-    question: "In what year did Pete Maravich win his only scoring title?",
-    choices: [' 1976', ' 1978', ' 1977', ' 1975'],
-    correctAnswer: 2,
-    point_value: 15
-  }, {
-    question: "Who among these players below won the most NBA scoring titles?",
-    choices: [" Kareem-Abdul Jabbar", " Bob McAdoo", " Jerry West", " George Gervin"],
-    correctAnswer: 3,
-    point_value: 10
-  }, {
-    question: "Which of the players from the list below never won an NBA scoring title?",
-    choices: [" Larry Bird", " Bernard King", " Elvin Hayes", " Alex English"],
-    correctAnswer: 0,
-    point_value: 10
-  }, {
-    question: "Which NBA player won scoring titles in both 2000 and 2005?",
-    choices: [ " Kobe Bryant", " Shaquille O'Neal", " Alan Iverson", " Tracy McGrady"],
-    correctAnswer: 1,
-    point_value: 15
-  }, {
-    question: "Who was the first player to win a second NBA scoring championship?",
-    choices: [" George Mikan", " Bob Petit", " Paul Arizin", " Neal Johnston"],
-    correctAnswer: 0,
-    point_value: 25
-
-    }, {
-    question: "Who won the NBA scoring title in 1994? ",
-    choices: [ " Michael Jordan", " Hakeem Olajuwon", " David Robinson", " Shaquille O'Neal"],
-    correctAnswer: 2,
-    point_value: 15
-
-   }, {
-  	question: "Wilt Chamberlain owns the five highest point per game totals in the history of the NBA. Who owns the 6th highest?",
-    choices: [" Rick Barry", " Kobe Bryant", " Michael Jordan", " Bob McAdoo"],
-    correctAnswer: 0,
-    point_value: 20
-  }]
-  ];
-
- 
-  var questionSet = questions[0]; // LOADS CORRECT QUIZ
-  var questionCounter = 0; // TRACKS QUESTION NUMBER
-  var selections = []; // CREATES ARRAY WITH USER CHOICES
-  var choices = questions[0,0].correctAnswer;
-  var quiz = $('.trivia-questions'); //Q & A AREA
-  
-
-  // DISPLAY INITIAL QUESTION - LOADED FROM ARRAYS ABOVE
-
-  displayNext();
-  
-  $(".visible li.topic-title").click(function() {
-  	questionSet = questions[$(this).data("set")];
-  	startGame();  	
-  })
-
-  // NEXT BUTTON, HANDLER - 
-  $('#next').on('click', function (e) {
-    e.preventDefault();
-    
-    // Suspend click listener during question transition
-    if(quiz.is(':animated')) {        
-      return false;
-    }
-    choose();
-    
-    // ERROR IF NEXT BUTTON IS PUSHED WITHOUT AN ANSWER CHOICE
-    
-    if (isNaN(selections[questionCounter])) {
-      alert('Please choose an answer!');
-    } else {
-      questionCounter++;
-      displayNext(questionCounter);
-    }
-  });
-  
-
-  function calculateScore() {
-  	var numCorrect = 0;
-    var totalPoints = 0;
-    for (var i = 0; i < selections.length; i++) {
-      if (selections[i] === questionSet[i].correctAnswer) {
-        numCorrect++;
-        totalPoints+=questionSet[i].point_value;
-    	
-      }
-
-    }
-    return [numCorrect, totalPoints];
-
-  }
-
-
-  // Creates and returns the div that contains the questions and 
-  // the answer selections
-  function createQuestioncontainer(index) {
-    var qContainer = $('<div class="trivia-questions">', {
-      id: 'question-number'
-    });
-    var currentScore = calculateScore();
-    var questionPtvalue = questionSet[index].point_value;
-    for (var i = 0; i < questionSet[index].choices.length; i++) {
-    $('#question-score.q-score-css').text((questionPtvalue) + 'pts');
-    }
-    
-
-
-    // questionSet = questions[0];
-    choices = questions[0,0].correctAnswer;
-
-
-   
-    
-
-    var questionNo = $('<h2>QUESTION ' + 0 + (index + 1) + ':</h2>');
-  	$('#question-number.question-01').html(questionNo);
-    
-    var question = $('<div class="question-text">').append(questionSet[index].question);
-    qContainer.append(question);
-    $('header ul li.total-score').text(currentScore[1]);
-
-	
-    var radioButtons = createRadios(index);
-    qContainer.append(radioButtons);
-    
-    return qContainer;
-  }
-  
-
-  // places user choice into an array
-  function choose() {
-    selections[questionCounter] = + $('input[name="answer"]:checked').val();
-    
-  }
-  		
-  // Displays next question
-  function displayNext(index) {
-  	 if (index > 0) {
-    	if (selections[index-1] === questionSet[index-1].correctAnswer) {
-    	    // if (5*3 === 15) {
-    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#1e6c06');
-    }     
-
-	else   {
-    	$('ul#question-dots li:nth-child(' + (questionCounter) + ') i').css('color', '#66000a');
- 	}
- 	console.log(selections[index-1]);
-	console.log(questionSet[index-1].correctAnswer);
- }
-
-    quiz.fadeOut(function() {
-      $('.trivia-questions').hide();
-
-
-      if(questionCounter < questionSet.length){
-        var nextQuestion = createQuestioncontainer(questionCounter);
-        quiz.append(nextQuestion).fadeIn();
-        if (!(isNaN(selections[questionCounter]))) {
-          $('input[value='+selections[questionCounter]+']').prop('checked', true);
-          $('ul.answer-text').hide();
-
-        }
-        
-      }else {
-        var scoreDiv = displayScore();
-        quiz.append(scoreDiv).fadeIn();
-        $('ul.answer-text').show();
-        SetHighScores();
-
-        // $('#next').hide();
-        // $('#start').show();
-      }
-    });
-  }
-  
-    // Creates a list of the answer choices as radio inputs
-  function createRadios(index) {
-    var radioList = $('<ul class="answer-text">');
-    var item;
-    var input = '';
-    for (var i = 0; i < questionSet[index].choices.length; i++) {
-      item = $('<li>');
-      input = '<input type="radio" name="answer" value=' + i + ' />';
-      input += questionSet[index].choices[i];
-      item.append(input);
-      radioList.append(item);
-      // console.log(questions[index].choices[i]);
-
-    }
-
-    return radioList;
-
-  }
-
-  // Calculates number of correct answers and creates a message to be displayed
-  function displayScore(index) {
-  	// console.log(questionSet);
-    var score = $('<div>',{class: 'trivia-questions'});
-    var calculatedScore = calculateScore();
-    currentScore = calculateScore();
-    $('header ul li.total-score').text(currentScore[1]);
-
-   
-    var trueTxtcolr = "";
-    var falseTxtcolr = "";
-    var result = "";
-    for (var i=0; i < questionSet.length; i++) {
-
-    	 if (questionSet[i].choices[questionSet[i].correctAnswer] === questionSet[i].choices[selections[i]]) {
-    	trueTxtcolr = '#1E6C06';
-    	falseTxtcolr = '#66000A';
-
-    	}
-
-    	else {
-    	trueTxtcolr = '#66000A';
-}
-    	result += (i + 1 ) + '. ' + questionSet[i].question + '<br />' + '<em>Your Answer: </em>' + '<element style="color:' + trueTxtcolr + ';">' + questionSet[i].choices[selections[i]]  + '</element><br />' + '<em>Correct Answer:</em> ' + questionSet[i].choices[questionSet[i].correctAnswer] + '.<br /><hr>';
-    	
-
-    }
-
-  	$('ul.answer-text').html(result);
-    	// $('ul.answer-text').html('0' + i + '.' + question01 + '<br />' + 'Your Answer: ' + selections[i] + ' Correct Answer: ' + questionSet[i].correctAnswer + '<br />')
-    
-
-
-   score.append('<h2>You\'ve answered ' + calculatedScore[0] + ' questions out of ' +
-   questionSet.length + ' correctly. Your total score is ' + calculatedScore[1] + '.</h2></div>');
-    return score;
-    }
-   
-  $('#start-game').click(function(){
-  	startGame();
- });
-
-  function startGame() {
-  	event.preventDefault();
-			// $('header ul li.total-score').text("18");
-			$('.q-score-css').text(" 0pts");
-			// $('header ul li.topic-title').text('JETSONS TRIVIA');
-			// $('header ul li.topic-title').css('animation-play-state','paused');
-			// createQuestioncontainer();
-			createRadios(0);
-			$('.answer-text').hide();
-			questionCounter = 0;
-			selections = [];
-			// questionSet = questions[0];
-			displayNext();
-			calculateScore();
-			$('ul#question-dots li i').css('color', '#778DA3');
-
-
-
-  }
-
-  /*--- Display information modal box ---*/
- 		$("#howToplay").click(function(){
-		$("#quiz").css("opacity", "0.2");
-		// $("ul.footer-box").hide();
-   		$(".overlay").show();
-
-  	});
-
-              // Get the modal
-              var modal = document.getElementById('myModal');
-
-              // Get the button that opens the modal
-              var btn = document.getElementById("myBtn");
-
-              // Get the <span> element that closes the modal
-              var span = document.getElementsByClassName("close")[0];
-
-              // When the user clicks the button, open the modal 
-              btn.onclick = function() {
-                  modal.style.display = "block";
-              }
-
-              // When the user clicks on <span> (x), close the modal
-              span.onclick = function() {
-                  modal.style.display = "none";
-              }
-
-              // When the user clicks anywhere outside of the modal, close it
-              window.onclick = function(event) {
-                  if (event.target == modal) {
-                      modal.style.display = "none";
-                      $(".control-panel").show();
-                      $("ul.footer-box").show();
-                      $("#quiz").css("opacity", "1.0");
+                  }, {
+                      question: "The invention of the refrigerator made a significant improvement to our standard of living. Who is credited with the invention?",
+                      choices: [" Carl von Linde", " Michael Faraday", " Oliver Evans", " Joseph Beuys"],
+                      correctAnswer: 2,
+                      point_value: 25
                   }
+              ],
+
+              // THE JETSONS 
+
+              [{
+                  question: "Meet George Jetson.... His boy ____",
+                  choices: [' George, Jr.', ' Cosmo', ' Elroy', ' Astro'],
+                  correctAnswer: 2,
+                  point_value: 5
+              }, {
+                  question: "What is name of George's boss? ",
+                  choices: [" Cosmo Spacely", " George Sprocket", " Arturo Spacely", " Elroy Sprocket"],
+                  correctAnswer: 0,
+                  point_value: 10
+              }, {
+                  question: "What is the name of the Jetsons' robotic housekeeper?",
+                  choices: [" Judy", " Roseanne", " Mariana", " Rosie"],
+                  correctAnswer: 3,
+                  point_value: 10
+              }, {
+                  question: "What is the name of the annoying family pet?",
+                  choices: [" Astro", " Elroy", " Rufus", " Rocket"],
+                  correctAnswer: 0,
+                  point_value: 5
+              }, {
+                  question: "What is the name of the daughter, Elroy's sister?",
+                  choices: [" Jane", " Rosie", " Judy", " Anne"],
+                  correctAnswer: 2,
+                  point_value: 10
+
+              }, {
+                  question: "When she grows up, what does Judy want to be?",
+                  choices: [" Scientist", " Pop star", " School teacher", " Housewife"],
+                  correctAnswer: 1,
+                  point_value: 5
+
+              }, {
+                  question: "George Jetson is gainfully employed by which firm?",
+                  choices: [" Cosmo's Rockets", " Spacely Sprockets", " Spacely's Rockets", " Astro-Glide"],
+                  correctAnswer: 1,
+                  point_value: 10
+              }],
+
+              // WORLD CAPITALS
+
+              [{
+                  question: "Which of the following is NOT a capital city?",
+                  choices: [' Jakarta', ' New Delhi', ' Budapest', ' Antwerp'],
+                  correctAnswer: 3,
+                  point_value: 15
+              }, {
+                  question: "What is the capital city of Venezuela? ",
+                  choices: [" Bogota", " Caracas", " Lima", " Buenos Aires"],
+                  correctAnswer: 1,
+                  point_value: 10
+              }, {
+                  question: "Which of the following cities is a capital city on the African continent?",
+                  choices: [" Nairobi", " Algiers", " Cairo", " All of the above"],
+                  correctAnswer: 3,
+                  point_value: 10
+              }, {
+                  question: "Djibouti is the capital city of which African nation?",
+                  choices: [" Gambia", " Chad", " Djibouti", " Ghana"],
+                  correctAnswer: 2,
+                  point_value: 5
+              }, {
+                  question: "Which of the following is the capital of Equatorial Guinea?",
+                  choices: [" Malabo", " Asmara", " Monrovia", " Lilongwe"],
+                  correctAnswer: 0,
+                  point_value: 25
+
+              }, {
+                  question: "Which of these European capital cities has the largest population? ",
+                  choices: [" Lisbon", " Vienna", " Helsinki", " Minsk"],
+                  correctAnswer: 3,
+                  point_value: 15
+
+              }, {
+                  question: "What is the capital of the Ukraine?",
+                  choices: [" Budapest", " Kiev", " Tblisi", " Minsk"],
+                  correctAnswer: 1,
+                  point_value: 20
+              }],
+
+              // NBA SCORING CHAMPS
+
+              [{
+                  question: "In what year did Pete Maravich win his only scoring title?",
+                  choices: [' 1976', ' 1978', ' 1977', ' 1975'],
+                  correctAnswer: 2,
+                  point_value: 15
+              }, {
+                  question: "Who among these players below won the most NBA scoring titles?",
+                  choices: [" Kareem-Abdul Jabbar", " Bob McAdoo", " Jerry West", " George Gervin"],
+                  correctAnswer: 3,
+                  point_value: 10
+              }, {
+                  question: "Which of the players from the list below never won an NBA scoring title?",
+                  choices: [" Larry Bird", " Bernard King", " Elvin Hayes", " Alex English"],
+                  correctAnswer: 0,
+                  point_value: 10
+              }, {
+                  question: "Which NBA player won scoring titles in both 2000 and 2005?",
+                  choices: [" Kobe Bryant", " Shaquille O'Neal", " Alan Iverson", " Tracy McGrady"],
+                  correctAnswer: 1,
+                  point_value: 15
+              }, {
+                  question: "Who was the first player to win a second NBA scoring championship?",
+                  choices: [" George Mikan", " Bob Petit", " Paul Arizin", " Neal Johnston"],
+                  correctAnswer: 0,
+                  point_value: 25
+
+              }, {
+                  question: "Who won the NBA scoring title in 1994? ",
+                  choices: [" Michael Jordan", " Hakeem Olajuwon", " David Robinson", " Shaquille O'Neal"],
+                  correctAnswer: 2,
+                  point_value: 15
+
+              }, {
+                  question: "Wilt Chamberlain owns the five highest point per game totals in the history of the NBA. Who owns the 6th highest?",
+                  choices: [" Rick Barry", " Kobe Bryant", " Michael Jordan", " Bob McAdoo"],
+                  correctAnswer: 0,
+                  point_value: 20
+              }]
+          ];
+
+          this.quizTopic = this.questions[0];
+
+          this.startGame = function() {
+              $('.q-score-css').text("0pts");
+              $('ul#question-dots li i').css('color', '#778DA3');
+              $('ul.left-header-box li.total-score').text("0");
+              $('.answer-text').hide(); //hide
+              this.questionCounter = 0;
+              this.selections = [];
+              this.displayNext();
+              this.calculateScore();
+              this.createRadios();
+          };
+
+          // console.log(this.questions.length)
+
+          this.score = 0;
+          this.currentScore = 0;
+          this.questionCounter = 0; // TRACKS QUESTION NUMBER
+          this.selections = []; // CREATES ARRAY WITH USER CHOICES
+          this.correct = this.questions[0].correctAnswer;
+
+
+          this.createRadios = function(index) {
+              var self = this;
+              var radioList = $('<ul class="answer-text">');
+              var item;
+              var input = '';
+              for (var i = 0; i < this.quizTopic[i].choices.length; i++) {
+                  item = $('<li>');
+                  input ='<input type="radio" name="answer" value=' + i + ' />';
+                  input += this.quizTopic[this.questionCounter].choices[i];
+                  item.append(input);
+                  radioList.append(item);
+              }
+              return radioList;
+          }
+
+
+          this.calculateScore = function() {
+              this.numCorrect = 0;
+              this.totalPoints = 0;
+              for (var i = 0; i < this.selections.length; i++) {
+
+                  if (this.selections[i] === this.quizTopic[i].correctAnswer) {
+                      this.numCorrect++;
+                      this.totalPoints += this.quizTopic[i].point_value;
+                  }
+
+              }
+              return [this.numCorrect, this.totalPoints];
+          }
+
+          this.createQuestioncontainer = function(index) {
+              var qContainer = $(
+                  '<div class="trivia-questions">', {
+                      id: 'question-number'
+                  });
+              var currentScore = this.calculateScore();
+              var questionPtvalue = this.quizTopic[index].point_value;
+              for (var i = 0; i < this.quizTopic[index].choices.length; i++) {
+                  $('#question-score.q-score-css').text((
+                      questionPtvalue) + 'pts');
+              }
+              this.correct = this.quizTopic.correctAnswer;
+              var questionNo = $('<h2>QUESTION ' + 0 + (index +
+                  1) + ':</h2>');
+              $('#question-number.question-01').html(questionNo);
+              var question = $('<div class="question-text">').append(this.quizTopic[index].question);
+              qContainer.append(question);
+              $('header ul li.total-score').text(currentScore[1]);
+              var radioButtons = this.createRadios(index);
+              qContainer.append(radioButtons);
+              return qContainer;
+          }
+
+          this.displayScore = function(index) {
+
+              this.score = $('<div>', {
+                  class: 'trivia-questions'
+              });
+
+              this.calculatedScore = this.calculateScore;
+              this.currentScore = this.calculateScore();
+              $('header ul li.total-score').text(this.currentScore[1]);
+
+              this.trueTxtcolr = "";
+              this.falseTxtcolr = "";
+              this.result = "";
+
+
+              for (var i = 0; i < this.quizTopic.length; i++) {
+                  // console.log(this.quizTopic.correctAnswer, this.quizTopic.choices[this.selections[0]]);
+                  if (this.quizTopic[i].correctAnswer === this.quizTopic[i].choices[this.selections[i]]) {
+                      this.trueTxtcolr = '#1E6C06';
+                  } else {
+                      this.trueTxtcolr = '#66000A';
+                  }
+                  this.result += (i + 1) + '. ' + this.quizTopic[i].question +
+                      '<br />' + '<em>Your Answer: </em>' +
+                      '<element style="color:' + this.trueTxtcolr +
+                      ';">' + this.quizTopic[i].choices[this.selections[
+                          i]] + '</element><br />' +
+                      '<em>Correct Answer:</em> ' + this.quizTopic[i].choices[this.quizTopic[i].correctAnswer] +
+                      '.<br /><hr>';
               }
 
+              $('ul.answer-text').html(this.result);
+              this.score.append('<h2>You\'ve answered ' + this.numCorrect + ' questions out of ' + this.quizTopic.length +
+                  ' correctly. Your total score is ' + this.totalPoints + '.</h2></div>');
+              $('.next-q-css').hide();
+              return this.score;
 
- 		/*--- Hide information modal box ---*/
-  	$(".close").click(function(){
-  		$(".overlay").fadeOut(600);
-			$(".control-panel").show();
-			$("ul.footer-box").show();
-			$("#quiz").css("opacity", "1.0");
+          }
+
+          this.choose = function() {
+              this.selections[this.questionCounter] = +$('input[name="answer"]:checked').val();
+          }
+
+          this.displayNext = function(index) {
+              if (index > 0) {
+                  if (this.selections[index - 1] === this.quizTopic[index - 1].correctAnswer) {
+                      $('ul#question-dots li:nth-child(' + (
+                          this.questionCounter) + ') i').css(
+                          'color', '#1e6c06');
+                  } else {
+                      $('ul#question-dots li:nth-child(' + (
+                          this.questionCounter) + ') i').css(
+                          'color', '#66000a');
+                  }
+
+              };
+
+              var self = this;
+              quizArea.fadeOut(function() {
+                  $('.trivia-questions').hide(); //hide
+                  if (self.questionCounter < self.quizTopic.length) {
+                      var nextQuestion =
+                          self.createQuestioncontainer(self.questionCounter);
+                      quizArea.append(nextQuestion).fadeIn();
+                      if (!(isNaN(self.selections[this.questionCounter]))) {
+                          $('input[value=' + self.selections[
+                              self.questionCounter
+                          ] + ']').prop('checked',
+                              true);
+                          $('ul.answer-text').hide(); //hide
+                      }
+                  } else {
+                      var scoreDiv = self.displayScore();
+                      quizArea.append(scoreDiv).fadeIn();
+                      $('ul.answer-text').show();
+                  }
+              });
 
 
-	});
-/*--- Set and Maintain High Score List ---*/
+              // NEXT BUTTON, HANDLER - 
+              $('#next').on('click', function(e) {
+                  e.preventDefault();
+                  // Suspend click listener during question transition
+                  if (quizArea.is(':animated')) {
+                      return false;
 
+                  }
+                  self.choose();
 
+                  // ERROR IF NEXT BUTTON IS PUSHED WITHOUT AN ANSWER CHOICE
+                  if (isNaN(self.selections[self.questionCounter])) {
+                      alert('Please choose an answer!');
+                  } else {
+                      self.questionCounter++;
+                      self.displayNext(self.questionCounter);
+                      // console.log(self.questions[0]);
+                  }
+              });
 
-function SetHighScores() {
-	var myHighScore = $('li.total-score').text();
-	var previousHS = (localStorage.HighScore ? localStorage.HighScore : 0)
-	if (myHighScore > previousHS) {
-		localStorage.setItem('HighScore', myHighScore);
-	}
-	
-	console.log(myHighScore);
-}
+          }
+      };
 
-$('#showHighScore').click(function ShowHighScoreValues() {
-var previousHS = (localStorage.HighScore ? localStorage.HighScore : 0)
-$('li#high-score-container.high-score').html('HIGH SCORE: ' + previousHS + 'pts');
+      var quiz = new QuizModel();
+      var quizArea = $('.trivia-questions');
 
-});
+      $('#start-game').click(function() {
+          quiz.startGame();
+      });
 
-// ShowHighScoreValues();
+      $(".visible li.topic-title").click(function() {
+              quiz.quizTopic = quiz.questions[$(this).data("set")];
+              quiz.startGame();
+       })
+          
+      /*--- Display information modal box ---*/
+      $("#howToplay").click(function() {
+          $("#quiz-area").css("opacity", "0.2");
+          // $("ul.footer-box").hide();
+          $(".overlay").show();
+      });
+      // Get the modal
+      var modal = document.getElementById('myModal');
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+      // When the user clicks the button, open the modal 
+      btn.onclick = function() {
+              modal.style.display = "block";
+          }
+          // When the user clicks on <span> (x), close the modal
+      span.onclick = function() {
+              modal.style.display = "none";
+          }
+          // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+              if (event.target == modal) {
+                  modal.style.display = "none";
+                  $(".control-panel").show();
+                  $("ul.footer-box").show();
+                  $("#quiz-area").css("opacity", "1.0");
+              }
+          }
+          /*--- Hide information modal box ---*/
+      $(".close").click(function() {
+          $(".overlay").fadeOut(600);
+          $(".control-panel").show();
+          $("ul.footer-box").show();
+          $("#quiz-area").css("opacity", "1.0");
+      });
+      /*--- Set and Maintain High Score List ---*/
+      $('#showHighScore').click(function ShowHighScoreValues() {
+          var previousHS = (localStorage.HighScore ?
+              localStorage.HighScore : 0)
+          $('li#high-score-container.high-score').html(
+              'HIGH SCORE: ' + previousHS + 'pts');
+      });
+      // ShowHighScoreValues();
+      $('#clearStorage').click(function clearStorage() {
+          localStorage.clear();
+          $('li#high-score-container.high-score').html(
+              'HIGH SCORE: 00');
+      })
 
-$('#clearStorage').click(function clearStorage() {
-localStorage.clear();
-$('li#high-score-container.high-score').html('HIGH SCORE: 00');
-})
-
-
-	// var myScore = calculateScore();
-	// parseInt(localStorage.setItem('highScore', '22'));
-	// var highScore = parseInt(localStorage.getItem('highScore'));
-	// localStorage.getItem('highScore', 'myScore')
-
-			
-	// console.log(highScore);
-	// console.log(myScore);
-
-	// return [myScore, highScore]
-		
-
-  	
-});
+  });

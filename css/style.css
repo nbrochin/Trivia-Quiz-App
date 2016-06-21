@@ -136,6 +136,13 @@ header ul li.app-title {
   margin-left: 25px;
 }
 
+header ul li.score-label {
+  font-size: 20px;
+  color: #c3e43a;
+  float: right;
+  margin-left: 25px;
+}
+
 header ul li.app-title span {
   font-size: 28px;
   color: #f0ad4e;
@@ -161,6 +168,12 @@ header ul li.total-score {
   float:right;
   font-size: 88px;
   color: #c3e43a;
+}
+
+header ul li.total-score em {
+  float:right;
+  font-size: 18px;
+  color: #c0e4a2;
 }
 
 h1 {
@@ -415,6 +428,15 @@ ul#question-dots li i {
 }
 
 .start-game-css {
+  font-weight: 500;
+  display: inline;;
+  color: #7a5aa6;
+  font-size: 36px;
+  margin: 0 20px;
+  float: right;
+}
+
+.next-q-css {
   font-weight: 500;
   display: inline;;
   color: #7a5aa6;
