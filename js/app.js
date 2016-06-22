@@ -1,3 +1,4 @@
+  
   $(document).ready(function() {
       var QuizModel = function() {
 
@@ -176,6 +177,7 @@
               $('ul#question-dots li i').css('color', '#778DA3');
               $('ul.left-header-box li.total-score').text("0");
               $('.answer-text').hide(); //hide
+              $('.next-q-css').show();
               this.questionCounter = 0;
               this.selections = [];
               this.displayNext();
@@ -261,19 +263,20 @@
 
 
               for (var i = 0; i < this.quizTopic.length; i++) {
-                  // console.log(this.quizTopic.correctAnswer, this.quizTopic.choices[this.selections[0]]);
-                  if (this.quizTopic[i].correctAnswer === this.quizTopic[i].choices[this.selections[i]]) {
+                  //console.log(this.quizTopic[0].correctAnswer, this.quizTopic.choices[this.selections[0]]);
+                  if (this.selections[i] === this.quizTopic[i].correctAnswer)  {
                       this.trueTxtcolr = '#1E6C06';
+                      console.log('true')
                   } else {
-                      this.trueTxtcolr = '#66000A';
+                      this.trueTxtcolr = '#cc0300';
                   }
                   this.result += (i + 1) + '. ' + this.quizTopic[i].question +
                       '<br />' + '<em>Your Answer: </em>' +
                       '<element style="color:' + this.trueTxtcolr +
-                      ';">' + this.quizTopic[i].choices[this.selections[
-                          i]] + '</element><br />' +
-                      '<em>Correct Answer:</em> ' + this.quizTopic[i].choices[this.quizTopic[i].correctAnswer] +
-                      '.<br /><hr>';
+                      ';"><strong>' + this.quizTopic[i].choices[this.selections[
+                          i]] + '</strong></element><br />' +
+                      '<em>Correct Answer:</em><element style="color:#000000;">' + this.quizTopic[i].choices[this.quizTopic[i].correctAnswer] +
+                      '.</element><br /><hr>';
               }
 
               $('ul.answer-text').html(this.result);
@@ -359,7 +362,7 @@
               quiz.startGame();
        })
           
-      /*--- Display information modal box ---*/
+      // NEXT BUTTON, HANDLER - 
       $("#howToplay").click(function() {
           $("#quiz-area").css("opacity", "0.2");
           // $("ul.footer-box").hide();
@@ -367,15 +370,12 @@
       });
       // Get the modal
       var modal = document.getElementById('myModal');
-      // Get the button that opens the modal
       var btn = document.getElementById("myBtn");
-      // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-      // When the user clicks the button, open the modal 
+
       btn.onclick = function() {
               modal.style.display = "block";
           }
-          // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
               modal.style.display = "none";
           }
@@ -388,6 +388,7 @@
                   $("#quiz-area").css("opacity", "1.0");
               }
           }
+
           /*--- Hide information modal box ---*/
       $(".close").click(function() {
           $(".overlay").fadeOut(600);
@@ -395,6 +396,7 @@
           $("ul.footer-box").show();
           $("#quiz-area").css("opacity", "1.0");
       });
+
       /*--- Set and Maintain High Score List ---*/
       $('#showHighScore').click(function ShowHighScoreValues() {
           var previousHS = (localStorage.HighScore ?

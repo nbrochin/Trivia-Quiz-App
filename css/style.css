@@ -184,6 +184,19 @@ h1 {
 
 }
 
+.question-text {
+    width: 1028px;
+    font-size: 32px;
+    font-weight: 500;
+    font-family: 'Museo Slab' !important;
+    line-height: 1.2em;
+    padding: 12px;
+    background-color: #dfebae;
+    margin: 20px 0;
+    color: #28161A;
+    text-align: left;
+}
+
 
 .modal-content {
 	background-color: #fbfbfb;
@@ -303,19 +316,6 @@ h1 {
   box-sizing: border-box;
   text-align: left;
   z-index: 0;
-}
-
-.question-text {
-	width: 1028px;
-  font-size: 32px;
-  font-weight: 500;
-  font-family: 'Museo Slab' !important;
-  line-height: 1.2em;
-  padding: 12px;
-  background-color: #dfebae;
-  margin:20px 0;
-  color: #28161A;
-  text-align:left;
 }
 
 .answer-choices {
